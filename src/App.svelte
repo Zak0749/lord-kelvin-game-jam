@@ -1,39 +1,37 @@
+<svelte:head>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</svelte:head>
+
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import TitleScreen from "./title/TitleScreen.svelte";
+  import { gameState } from "./gameState.svelte";
+  import Game from "./game/Game.svelte";
+  import OptionsMenu from "./options/OptionsMenu.svelte";
 </script>
 
-<main>
-  <div>
-    <a href="https://vite.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>This is the initial commit by the cool kid zak</h1>
+<div>
+  {#if gameState.isPlaying}
+    <Game />
+  {:else}
+    <TitleScreen />
+  {/if}
+</div>
 
-  <div class="card">
-    <Counter />
+{#if gameState.optionsMenuOpen}
+  <div class="over">
+    <OptionsMenu />
   </div>
-</main>
+{/if}
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
+  .over {
+    z-index: 1;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    top: 0;
+    backdrop-filter: blur(5px);
   }
 </style>
