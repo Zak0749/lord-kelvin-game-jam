@@ -1,13 +1,13 @@
 <script lang="ts">
   import { gameState } from "../gameState.svelte";
-  import rocket from "../assets/Cartoon_space_rocket.png";
+  import station from "../assets/space-station.png";
 </script>
 
 <main>
   <h1>Game Title</h1>
 
   <div class="split-grid">
-    <img src={rocket} alt="Sprite" width="100" height="100" />
+    <img src={station} alt="Space Station" height="200" />
 
     <ul class="flex-list">
       <button onclick={() => (gameState.isPlaying = true)}> Start Game </button>
@@ -37,9 +37,46 @@
     background-position: center;
   }
 
+  img {
+    animation: bob 2s infinite;
+
+    
+  }
+
+  @keyframes bob {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
   h1 {
     margin: 0;
-    padding-top: 1rem;
+    padding-top: 2rem;
+    animation: rotate 3s infinite linear;
+
+    /* animation-timing-function: linear ease-in-out, linear, step-start, linear */
+
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(20deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    75% {
+      transform: rotate(-20deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
   }
 
   .split-grid {

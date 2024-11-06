@@ -1,5 +1,5 @@
 class GameState {
-    private _isPlaying = $state(true); // testing 
+    private _isPlaying = $state(false); // testing 
     private _optionsMenuOpen = $state(false);
 
     get isPlaying() {

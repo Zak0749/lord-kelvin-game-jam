@@ -2,34 +2,41 @@
   import { gameState } from "../gameState.svelte";
   import Canvas from "./Canvas.svelte";
   import person from "../assets/person.png";
+
+  let showPrompt = true;
 </script>
 
 <main>
-  <section class="split">
-    <button onclick={() => (gameState.isPlaying = false)}>
-      Back to title
-    </button>
-    <button onclick={() => (gameState.optionsMenuOpen = true)}>
-      Options
-    </button>
-  </section>
+  <section class="above-canvas">
+    <section class="split">
+      <button onclick={() => (gameState.isPlaying = false)}>
+        Back to title
+      </button>
+      <button onclick={() => (showPrompt = !showPrompt)}>
+        {showPrompt ? "Hide" : "Show"} Prompt
+      </button>
+      <button onclick={() => (gameState.optionsMenuOpen = true)}>
+        Options
+      </button>
+    </section>
 
-  <section>
-    <div style="display: flex;">
-      <img class="person-img" src={person} alt="person" />
-      <div class="person-desc">
-        <h2>Joe Mama</h2>
-        <p>
-          Excuse me, but could you possibly lend me a writing instrument?
-          Specifically, I am in need of a pen, preferably one with a fine tip
-          for precision writing. It would be ideal if the pen has a comfortable
-          grip, a smooth ink flow, and a reliable click mechanism or cap to
-          prevent any accidental ink marks. Additionally, if the pen has a
-          transparent barrel to monitor the ink level, that would be greatly
-          appreciated. Thank you in advance for your assistance!
-        </p>
-      </div>
-    </div>
+    {#if showPrompt}
+      <section>
+        <div style="display: flex;">
+          <img class="person-img" src={person} alt="person" />
+          <div class="person-desc">
+            <h2>Paul Holywood</h2>
+            <p>
+              Long description of a recipe that is being prepared. It is a cake
+              firstly you will need to mix the ingredients of: flour, sugar,
+              eggs, and milk. Then you will need to bake it in the oven for 30
+              minutes. Finally, you will need to let it cool down before
+              serving.
+            </p>
+          </div>
+        </div>
+      </section>
+    {/if}
   </section>
 
   <Canvas />
@@ -39,8 +46,7 @@
   main {
     height: 100vh;
     width: 100vw;
-    display: flex;
-    flex-direction: column;
+    position: relative;
   }
 
   .split {
@@ -56,5 +62,15 @@
 
   .person-desc {
     text-align: left;
+  }
+
+  .above-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
   }
 </style>
