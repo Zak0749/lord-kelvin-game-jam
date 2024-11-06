@@ -4,13 +4,16 @@
 </script>
 
 <main>
-  <h1>Game Title</h1>
+  <div class="title">
+    <h1>Game Title</h1>
+    <p style="color:#00ffff">Made by Lord Kelvin Fan Club</p>
+  </div>
 
   <div class="split-grid">
     <img src={station} alt="Space Station" height="200" />
 
     <ul class="flex-list">
-      <button onclick={() => (gameState.isPlaying = true)}> Start Game </button>
+      <button onclick={() => (gameState.isPlaying = true)} class="pixel-border"> Start Game </button>
       <button onclick={() => (gameState.optionsMenuOpen = true)}> Options </button>
     </ul>
   </div>
@@ -39,8 +42,6 @@
 
   img {
     animation: bob 2s infinite;
-
-    
   }
 
   @keyframes bob {
@@ -52,12 +53,17 @@
       }
     }
 
-  h1 {
+  h1, p {
     margin: 0;
-    padding-top: 2rem;
-    animation: rotate 3s infinite linear;
+    padding: 0;
 
     /* animation-timing-function: linear ease-in-out, linear, step-start, linear */
+
+  }
+  .title {
+    padding-top: 3rem;
+
+    animation: rotate 3s infinite linear;
 
   }
 

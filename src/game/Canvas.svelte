@@ -11,18 +11,36 @@
     type PositionedElement,
     type SpawnedElement,
   } from "./element.svelte";
+  import testImg from '../assets/test.png'
+  import check from '../assets/submit-successfully.png'
+
 
   onMount(() => {
     let frame: number;
+
+    const timg = new Image();
+    timg.src = testImg;
+    // timg.onload = () => {
+    //   render();
+    // };
+
+    const cimg = new Image();
+    cimg.src = check;
+    // cimg.onload = () => {
+    //   render();
+    // };
 
     function render() {
       frame = requestAnimationFrame(render);
 
       if (ctx && canvas) {
-        const width = canvas.width - 2 * tool_bar_edge;
-        const height = canvas.height;
+        const width = canvas.width - 4 * tool_bar_edge;
+        const bannerHeight = 5 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+        const height = canvas.height - bannerHeight;
 
-        ctx.clearRect(0, 0, width, height);
+
+        // dots
+        ctx.clearRect(0, 0, canvas.width, canvas.height );
         const spacing = 20;
 
         let num_x = Math.round(width / 20);
@@ -31,7 +49,7 @@
         for (let i = 1; i < num_x; i++) {
           for (let j = 1; j < num_y; j++) {
             let x = 2 * tool_bar_edge + i * spacing;
-            let y = j * spacing;
+            let y = j * spacing + bannerHeight;
 
             ctx.beginPath();
             ctx.arc(x, y, 2, 0, Math.PI * 2, true);
@@ -40,13 +58,35 @@
           }
         }
 
+        // placed elements
         placedElements.forEach(drawElement);
 
+        // toolbar elements
         discoveredElements.map(toolbar_element_positioned).forEach(drawElement);
+
+        // test area
+        const boxHeight = (height / 2.5) ;
+        const boxX = 2.25 * tool_bar_edge + width;
+        const boxY = (height / 2) + bannerHeight;
+        const boxW = 1.5 * tool_bar_edge;
+
+        ctx.fillStyle = "white";
+        ctx.fillRect(boxX, boxY, boxW, boxHeight);
+
+        const newboxy = (height / 2) - bannerHeight;
+
+        ctx.drawImage(timg, boxX, newboxy, boxW, boxHeight);
+
+        ctx.fillStyle = "white";
+        ctx.fillRect(boxX, newboxy, boxW, boxHeight);
+
+        ctx.drawImage(cimg, boxX, newboxy, boxW, boxHeight);
+
+
       }
     }
 
-    render();
+    render()
 
     if (discoveredElements.length == 0) {
       discoveredElements.push(

@@ -6,6 +6,14 @@
   <ul>
     <div>options menu</div>
 
+    <h2>Credits</h2>
+    <p>Game made by Lord Kelvin Fan Club</p>
+    <p>Music - EMIL</p>
+    <p>Music - EMIL</p>
+    <p>Music - EMIL</p>
+    <p>Music - EMIL</p>
+
+
     <button onclick={() => (gameState.optionsMenuOpen = false)}> Close </button>
   </ul>
 </section>
