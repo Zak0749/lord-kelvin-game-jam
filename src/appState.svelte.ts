@@ -1,4 +1,4 @@
-class GameState {
+class AppState {
     private _isPlaying = $state(false); // testing 
     private _optionsMenuOpen = $state(false);
 
@@ -21,4 +21,4 @@ class GameState {
     }
 }
 
-export let gameState = new GameState();
+export let appState = new AppState();

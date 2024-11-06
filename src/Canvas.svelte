@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
   import { onMount } from "svelte";
   import {
     combineElements,
@@ -241,13 +241,23 @@
 
     draggingElement = undefined;
   }
+
+  let canvas_width = $derived(container?.clientWidth || 100);
+  let canvas_height = $derived(container?.clientHeight || 100);
+
+  // $effect(() => {
+  //   canvas_width = container?.clientWidth || 100;
+  //   canvas_height = container?.clientHeight || 100;
+
+  //   console.log(canvas_width, canvas_height);
+  // });
 </script>
 
 <section bind:this={container}>
   <canvas
     bind:this={canvas}
-    height={window.innerHeight}
-    width={window.innerWidth}
+    height={canvas_height == 0 ? 100 : canvas_height }
+    width={canvas_width == 0 ? 100 : canvas_width }
     onmousedown={pickUpElement}
     onmousemove={dragElement}
     onmouseup={dropElement}
@@ -260,4 +270,4 @@
     width: 100vw;
     height: 100%;
   }
-</style>
+</style> -->

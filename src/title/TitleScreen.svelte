@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { gameState } from "../gameState.svelte";
+  import { appState } from "../appState.svelte";
   import station from "../assets/space-station.png";
 </script>
 
@@ -13,8 +13,8 @@
     <img src={station} alt="Space Station" height="200" />
 
     <ul class="flex-list">
-      <button onclick={() => (gameState.isPlaying = true)} class="pixel-border"> Start Game </button>
-      <button onclick={() => (gameState.optionsMenuOpen = true)}> Options </button>
+      <button onclick={() => (appState.isPlaying = true)} class="pixel-border"> Start Game </button>
+      <button onclick={() => (appState.optionsMenuOpen = true)}> Options </button>
     </ul>
   </div>
 </main>
@@ -61,7 +61,7 @@
 
   }
   .title {
-    padding-top: 3rem;
+    padding-top: 5rem;
 
     animation: rotate 3s infinite linear;
 

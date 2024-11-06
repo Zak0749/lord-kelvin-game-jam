@@ -1,76 +1,85 @@
 <script lang="ts">
-  import { gameState } from "../gameState.svelte";
-  import Canvas from "./Canvas.svelte";
-  import person from "../assets/person.png";
+  import ElementsTray from "./ElementsTray.svelte";
+  import Header from "./Header.svelte";
+  import MergeGrid from "./MergeGrid.svelte";
+  import Machines from "./Machines.svelte";
+  import Instructions from "./Instructions.svelte";
+  import FloatingElements from "./FloatingElements.svelte";
+  import { gameState } from "./gameState.svelte";
+  import SubmitElements from "./SubmitElements.svelte";
 
-  let showPrompt = true;
+  let mergeGrid = $state<HTMLElement>();
+
+  let elementsTray = $state<HTMLElement>();
 </script>
 
-<main>
-  <section class="above-canvas">
-    <section class="split">
-      <button onclick={() => (gameState.isPlaying = false)}>
-        Back to title
-      </button>
-      <button onclick={() => (showPrompt = !showPrompt)}>
-        {showPrompt ? "Hide" : "Show"} Prompt
-      </button>
-      <button onclick={() => (gameState.optionsMenuOpen = true)}>
-        Options
-      </button>
-    </section>
+<FloatingElements {elementsTray} />
 
-    {#if showPrompt}
-      <section>
-        <div style="display: flex;">
-          <img class="person-img" src={person} alt="person" />
-          <div class="person-desc">
-            <h2>Paul Holywood</h2>
-            <p>
-              Long description of a recipe that is being prepared. It is a cake
-              firstly you will need to mix the ingredients of: flour, sugar,
-              eggs, and milk. Then you will need to bake it in the oven for 30
-              minutes. Finally, you will need to let it cool down before
-              serving.
-            </p>
-          </div>
-        </div>
-      </section>
-    {/if}
+<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+<main>
+  <header>
+    <Header />
+  </header>
+
+  <aside class="element-tray" bind:this={elementsTray}>
+    <ElementsTray {mergeGrid} />
+  </aside>
+
+  <section class="instructions">
+    <Instructions />
   </section>
 
-  <Canvas />
+  <aside class="submit-area">
+    <SubmitElements />
+  </aside>
+
+  <section class="machines">
+    <Machines />
+  </section>
+
+  <section class="merge-grid" bind:this={mergeGrid}>
+    <MergeGrid />
+  </section>
 </main>
 
 <style>
   main {
     height: 100vh;
     width: 100vw;
-    position: relative;
-  }
-
-  .split {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-rows: 50px 2fr 1fr 5fr;
+    grid-template-columns: 3fr 5fr 2fr;
     padding: 1rem;
+    gap: 1rem;
+
+    grid-template-areas:
+      "header header header"
+      "instructions instructions submit"
+      "element-tray machines machines"
+      "element-tray merge-grid merge-grid";
   }
 
-  .person-img {
-    width: 15rem;
-    height: 15rem;
+  .element-tray {
+    grid-area: element-tray;
   }
 
-  .person-desc {
-    text-align: left;
+  header {
+    grid-area: header;
   }
 
-  .above-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+  .machines {
+    grid-area: machines;
+  }
+
+  .merge-grid {
+    grid-area: merge-grid;
+  }
+
+  .submit-area {
+    grid-area: submit;
+  }
+
+  .instructions {
+    grid-area: instructions;
   }
 </style>

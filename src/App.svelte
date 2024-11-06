@@ -4,20 +4,20 @@
 
 <script lang="ts">
   import TitleScreen from "./title/TitleScreen.svelte";
-  import { gameState } from "./gameState.svelte";
-  import Game from "./game/Game.svelte";
+  import { appState } from "./appState.svelte";
   import OptionsMenu from "./options/OptionsMenu.svelte";
+  import Game from "./game/Game.svelte";
 </script>
 
 <div>
-  {#if gameState.isPlaying}
+  {#if appState.isPlaying}
     <Game />
   {:else}
     <TitleScreen />
   {/if}
 </div>
 
-{#if gameState.optionsMenuOpen}
+{#if appState.optionsMenuOpen}
   <div class="over">
     <OptionsMenu />
   </div>

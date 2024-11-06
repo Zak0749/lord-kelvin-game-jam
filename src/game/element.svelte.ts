@@ -1,3 +1,5 @@
+import { appState } from "../appState.svelte";
+import { gameState } from "./gameState.svelte";
 
 export type GameElement = {
     name: string;
@@ -10,8 +12,6 @@ export type PositionedElement = GameElement & { x: number; y: number; };
 
 export type SpawnedElement = PositionedElement & { instance_id: number; };
 
-export let discoveredElements = $state<ElementId[]>([]);
-export let placedElements = $state<SpawnedElement[]>([]);
 
 const elementInfo: { [key: ElementId]: GameElement } = {
     'Fire': { name: 'Fire', color: 'red' },
@@ -195,8 +195,8 @@ export function combineElements(element1: ElementId, element2: ElementId): Eleme
     let newElement = searchMaps(element1, element2);
 
     if (newElement) {
-        if (newElement != 'Junk' && !discoveredElements.some((element) => element === newElement)) {
-            discoveredElements.push(newElement);
+        if (newElement != 'Junk' && !gameState.discoveredElementsIds.some((element) => element === newElement)) {
+            gameState.discoveredElementsIds.push(newElement);
         }
 
         return newElement;
@@ -215,7 +215,7 @@ export function toolbar_element_positioned(element: ElementId, index: number): P
 
 export function spawn_element(element: PositionedElement): SpawnedElement {
     let id = Math.floor(Math.random() * 1000000);
-    while (placedElements.some((element) => element.instance_id === id)) {
+    while (gameState.placedElements.some((element) => element.instance_id === id)) {
         id = Math.floor(Math.random() * 1000000);
     }
 

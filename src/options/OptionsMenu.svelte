@@ -1,5 +1,5 @@
 <script>
-  import { gameState } from "../gameState.svelte";
+  import { appState } from "../appState.svelte";
 </script>
 
 <section>
@@ -14,7 +14,7 @@
     <p>Music - EMIL</p>
 
 
-    <button onclick={() => (gameState.optionsMenuOpen = false)}> Close </button>
+    <button onclick={() => (appState.optionsMenuOpen = false)}> Close </button>
   </ul>
 </section>
 
