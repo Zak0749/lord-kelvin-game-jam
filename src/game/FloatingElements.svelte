@@ -1,11 +1,14 @@
 <script lang="ts">
+  import ElementCard from "./ElementCard.svelte";
   import {
+    gameState,
+    type DraggedElement,
+    type SpawnedElement,
     combineElements,
     get_element,
     spawn_element,
-  } from "./element.svelte";
-  import ElementCard from "./ElementCard.svelte";
-  import { gameState, type SpawnedElement } from "./gameState.svelte";
+  } from "./gameState.svelte";
+  import { mouse_in_box, mouse_in_rect } from "./helpers";
 
   // function moveDraggingElements(event: MouseEvent) {
   //   console.log("dragging element", gameState.draggingElement);
@@ -19,18 +22,11 @@
 
   let { elementsTray }: { elementsTray: HTMLElement | undefined } = $props();
 
-  const width = 50;
-  const height = 50;
-
   function letGoOfElement(event: MouseEvent) {
+    console.log(event);
     // of mouse is in the elements Tray
     if (elementsTray) {
-      if (
-        event.clientX >= elementsTray.getBoundingClientRect().left &&
-        event.clientX <= elementsTray.getBoundingClientRect().right &&
-        event.clientY >= elementsTray.getBoundingClientRect().top &&
-        event.clientY <= elementsTray.getBoundingClientRect().bottom
-      ) {
+      if (mouse_in_rect(elementsTray.getBoundingClientRect(), event)) {
         let index = gameState.placedElements.findIndex(
           (el) => el.instance_id === gameState.draggingElement!.instance_id
         );
@@ -40,18 +36,14 @@
       }
     }
 
-
     const elementUnderMouse = gameState.placedElements.find(
       (element) =>
-        event.clientX >= element.x &&
-        event.clientX <= element.x + width &&
-        event.clientY >= element.y &&
-        event.clientY <= element.y + height &&
-        element.instance_id !== gameState.draggingElement!.instance_id
+        element.instance_id !== gameState.draggingElement!.instance_id &&
+        mouse_in_box(element, event)
     );
 
-
-    
+    // mouse
+    console.log(elementUnderMouse);
     if (elementUnderMouse) {
       let index = gameState.placedElements.findIndex(
         (el) => el.instance_id === gameState.draggingElement!.instance_id
@@ -67,14 +59,14 @@
         gameState.placedElements.splice(index, 1);
       }
 
-      gameState.placedElements.push(
-        spawn_element({
-          ...get_element(
-            combineElements(
+      const combine = get_element(combineElements(
               elementUnderMouse.name,
               gameState.draggingElement!.name
-            )
-          ),
+            ))
+
+      gameState.placedElements.push(
+        spawn_element({
+          ...combine,
           x: gameState.draggingElement!.x,
           y: gameState.draggingElement!.y,
         })
@@ -84,14 +76,21 @@
     gameState.draggingElement = undefined;
   }
 
-  function dragElement(element: SpawnedElement) {
-    gameState.draggingElement = element;
+  function dragElement(
+    element: SpawnedElement,
+    offsetX: number,
+    offsetY: number
+  ) {
+    (element as DraggedElement).offsetX = offsetX;
+    (element as DraggedElement).offsetY = offsetY;
+    gameState.draggingElement = element as DraggedElement;
   }
 
   export function moveElement(event: MouseEvent) {
-    if (gameState.draggingElement) {
-      gameState.draggingElement.x = event.clientX - 10;
-      gameState.draggingElement.y = event.clientY - 10;
+    let dragging = gameState.draggingElement;
+    if (dragging) {
+      dragging.x = event.clientX - dragging.offsetX;
+      dragging.y = event.clientY - dragging.offsetY;
     }
   }
 
@@ -106,10 +105,15 @@
     class="floating-element"
     style="left: {element.x}px; top: {element.y}px"
     id={element.instance_id.toString()}
-    onmousedowncapture={() => dragElement(element)}
+    onmousedowncapture={(event) => {
+      const rect = event.currentTarget.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const offsetY = event.clientY - rect.top;
+      dragElement(element, offsetX, offsetY);
+    }}
     onmouseupcapture={letGoOfElement}
   >
-    <ElementCard {...element} />
+    <ElementCard {element} />
   </div>
 {/each}
 

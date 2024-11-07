@@ -1,11 +1,8 @@
 <script lang="ts">
-  import {
-    get_element,
-    spawn_element,
-    type GameElement,
-  } from "./element.svelte";
   import ElementCard from "./ElementCard.svelte";
-  import { gameState } from "./gameState.svelte";
+  import { gameState, get_element,
+    spawn_element,
+    type GameElement, } from "./gameState.svelte";
 
   let { mergeGrid }: { mergeGrid: HTMLElement | undefined } = $props();
 
@@ -31,7 +28,7 @@
           placeElement(element);
         }}
       >
-        <ElementCard {...element} />
+        <ElementCard {element} />
       </li>
     {/each}
   </ul>

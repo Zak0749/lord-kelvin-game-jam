@@ -4,7 +4,7 @@
 
 <style>
   .grid {
-    background-image: radial-gradient(rgb(101, 101, 101) 1.5px, transparent 0);
+    background-image: radial-gradient(lightgrey 1.5px, transparent 0);
     background-size: 20px 20px;
     background-position: -19px -19px;
 

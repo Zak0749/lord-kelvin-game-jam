@@ -1,19 +1,10 @@
 <script lang="ts">
-  type Machine = {
-    name: string;
-    color: string;
-  };
+  import { machines } from '../assets/elements.json'
 
-  let machines: Machine[] = $state([
-    { name: "Machine 1", color: "red" },
-    { name: "Machine 2", color: "blue" },
-    { name: "Machine 3", color: "green" },
-
-  ]);
 </script>
 
 <section>
-  {#each machines as machine}
+  {#each Object.values(machines) as machine}
     <div class="machine">
       <div class="square" style="--color: {machine.color}"></div>
       <h3 class="name">{machine.name}</h3>
@@ -32,6 +23,7 @@
     border-radius: 10px;
     height: 100%;
     justify-content: space-around;
+    align-items: center;
   }
 
   .machine {

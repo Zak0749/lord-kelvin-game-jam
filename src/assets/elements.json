@@ -1,0 +1,302 @@
+{
+  "machines": {
+    "Extractor": {
+      "color": "#65DE92",
+      "actions": {
+        "Hydroponic Root": "Root Extract",
+        "Stellar Herb": "Stellar Herb Extract",
+        "Nebula Moss": "Nebula Extract",
+        "Fungi": "Fungi Extract",
+        "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317": "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e",
+        "Root Extract": "Root Essence",
+        "Ground Root": "Root Essence",
+        "Ground Stellar Herb": "Herb Essence",
+        "Activated Moss": "Nebula Moss Concentrate",
+        "Nebula Extract": "Nebula Essence",
+        "Fungi Extract": "Fungi Essence"
+      },
+      "name": "Extractor"
+    },
+    "Grinder": {
+      "color": "#9D75B6",
+      "actions": {
+        "Hydroponic Root": "Ground Root",
+        "Ferrite Dust": "Fine Ferrite Dust",
+        "Stellar Herb": "Ground Stellar Herb",
+        "Cryocrystal": "Cryocrystal Powder",
+        "Ground Root": "Finely Ground Root",
+        "Ground Stellar Herb": "Finely Ground Stellar Herb",
+        "Carbon Fibrils": "Carbon Powder"
+      },
+      "name": "Grinder"
+    },
+    "Heater": {
+      "color": "#48A1D9",
+      "actions": {
+        "Ferrite Dust": "Ferrite Nuggets",
+        "Cryopaste": "Cryopaste",
+        "Nebula Moss": "Activated Moss",
+        "Carbon Flakes": "Carbon Fibrils",
+        "Root Extract": "Root Concentrate",
+        "Fine Ferrite Dust": "Ferrite Weave",
+        "Ferrite Nuggets": "Ferrite Plate",
+        "Stellar Herb Extract": "Stellar Paste",
+        "Cryocrystal Powder": "Cryocrystalline Shards",
+        "Nebula Extract": "Nebula Resin",
+        "Carbon Fibrils": "Carbon Sheet"
+      },
+      "name": "Heater"
+    }
+  },
+  "combinations": {
+    "Ferrite Dust:Nebula Extract": "Anti-Radiation Shield",
+    "Cryocrystal:Activated Moss": "Life Support Supplement",
+    "Cryocrystal Powder:Cryopaste": "Hyperdrive Enhancer",
+    "Nebula Moss:Hydroponic Root": "Atmospheric Cleaner",
+    "Stellar Herb:Ground Root": "Nutrient Enrichment",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Carbon Fibrils": "Alien Detoxifier",
+    "Fungi:Nebula Extract": "Bio-Rejuvenation Tonic",
+    "Ferrite Plate:Ferrite Weave": "Shield Strengthener",
+    "Cryocrystal:Hydroponic Root": "Optical Fluid",
+    "Fungi Essence:Nebula Resin": "Medicinal Balm",
+    "Cryocrystalline Shards:Ferrite Nuggets": "Thermal Coat",
+    "Activated Moss:Ground Stellar Herb": "Space Detox Drink",
+    "Carbon Sheet:Ferrite Weave": "Super Adhesive",
+    "Root Extract:Fungi Extract": "Organic Shield",
+    "Nebula Extract:Cryocrystal Powder": "Healing Ointment",
+    "Ferrite Dust:Stellar Herb Extract": "Radiation Barrier",
+    "Cryocrystal:Root Essence": "Oxygen Booster",
+    "Cryocrystal Powder:Ground Root": "Engine Coolant",
+    "Nebula Moss:Ferrite Plate": "Air Purifier",
+    "Stellar Herb:Cryopaste": "Growth Enhancer",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Ferrite Weave": "Alien Remedy",
+    "Fungi:Root Extract": "Bio-Revitalizer",
+    "Ferrite Plate:Cryocrystal Powder": "Shield Coating",
+    "Cryocrystal:Stellar Herb Extract": "Visual Aid",
+    "Fungi Essence:Cryopaste": "Healing Gel",
+    "Cryocrystalline Shards:Root Concentrate": "Heat Shield",
+    "Activated Moss:Ground Root": "Space Cleanser",
+    "Carbon Sheet:Ground Stellar Herb": "Binding Agent",
+    "Root Extract:Ferrite Dust": "Organic Armor",
+    "Nebula Extract:Root Essence": "Restorative Cream",
+    "Ferrite Dust:Stellar Paste": "Radiation Coating",
+    "Cryocrystal:Nebula Moss Concentrate": "Air Refresher",
+    "Cryocrystal Powder:Carbon Fibrils": "Coolant Paste",
+    "Nebula Moss:Cryocrystal Powder": "Atmospheric Reagent",
+    "Stellar Herb:Cryocrystalline Shards": "Plant Fertilizer",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Stellar Herb Extract": "Alien Cure",
+    "Fungi:Activated Moss": "Bio-Elixir",
+    "Ferrite Plate:Ground Root": "Shield Layer",
+    "Cryocrystal:Nebula Essence": "Optical Solution",
+    "Fungi Essence:Stellar Herb Extract": "Healing Potion",
+    "Cryocrystalline Shards:Ferrite Weave": "Thermal Barrier",
+    "Activated Moss:Cryocrystal Powder": "Space Purifier",
+    "Carbon Sheet:Fungi Extract": "Sealing Compound",
+    "Root Extract:Cryopaste": "Organic Booster",
+    "Nebula Extract:Stellar Herb Extract": "Regenerative Balm",
+    "Ferrite Dust:Root Extract": "Radiation Shield",
+    "Cryocrystal:Ground Stellar Herb": "Oxygenator",
+    "Cryocrystal Powder:Nebula Moss": "Engine Lubricant",
+    "Nebula Moss:Fungi Essence": "Atmosphere Stabilizer",
+    "Stellar Herb:Cryocrystal": "Plant Tonic",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Ground Stellar Herb": "Alien Medicine",
+    "Fungi:Cryocrystal Powder": "Bio-Restorer",
+    "Ferrite Plate:Cryocrystalline Shards": "Shield Hardener",
+    "Cryocrystal:Stellar Paste": "Optical Enhancer",
+    "Fungi Essence:Root Extract": "Healing Remedy",
+    "Cryocrystalline Shards:Stellar Herb Extract": "Thermal Wrap",
+    "Activated Moss:Ferrite Dust": "Space Sanitizer",
+    "Carbon Sheet:Ground Root": "Bonding Agent",
+    "Root Extract:Ferrite Plate": "Organic Armor Booster",
+    "Nebula Extract:Ground Stellar Herb": "Restorative Lotion",
+    "Ferrite Dust:Nebula Resin": "Energy Coating",
+    "Cryocrystal:Ground Root": "Oxygen Enhancer",
+    "Cryocrystal Powder:Ferrite Plate": "Coolant Gel",
+    "Nebula Moss:Cryocrystalline Shards": "Atmosphere Enricher",
+    "Stellar Herb:Activated Moss": "Plant Booster",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Cryocrystal Powder": "Alien Treatment",
+    "Fungi:Ferrite Dust": "Bio-Tonic",
+    "Ferrite Plate:Root Essence": "Shield Fortifier",
+    "Cryocrystal:Ferrite Nuggets": "Optical Booster",
+    "Fungi Essence:Cryocrystal Powder": "Healing Elixir",
+    "Cryocrystalline Shards:Fungi Extract": "Thermal Guard",
+    "Activated Moss:Cryocrystal": "Space Cleaner",
+    "Carbon Sheet:Root Essence": "Super Bond",
+    "Root Extract:Activated Moss": "Organic Shield Enhancer",
+    "Nebula Extract:Ground Root": "Rejuvenation Balm",
+    "Cryocrystal Powder:Fungi Essence": "Engine Shield",
+    "Nebula Moss:Ferrite Nuggets": "Atmosphere Cleaner",
+    "Stellar Herb:Carbon Powder": "Plant Growth Serum",
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Root Concentrate": "Alien Elixir",
+    "Fungi:Cryocrystalline Shards": "Bio-Serum",
+    "Cryocrystal:Carbon Fibrils": "Optical Enhancing Fluid",
+    "Fungi Essence:Nebula Extract": "Healing Draught",
+    "Cryocrystalline Shards:Carbon Sheet": "Thermal Buffer",
+    "Activated Moss:Ferrite Plate": "Space Detoxifier",
+    "Carbon Sheet:Cryocrystal": "High-Bond Adhesive",
+    "Root Extract:Cryocrystal Powder": "Organic Fortifier",
+    "Nebula Extract:Ferrite Weave": "Rejuvenation Cream",
+    "Ferrite Dust:Ground Root": "Radiation Armor",
+    "Cryocrystal:Carbon Sheet": "Oxygen Infuser",
+    "Cryocrystal Powder:Cryocrystalline Shards": "Engine Fortifier",
+    "Nebula Moss:Carbon Powder": "Atmosphere Purifier",
+    "Stellar Herb:Cryocrystal Powder": "Plant Enhancer"
+  },
+  "ingredients": {
+    "Hydroponic Root": {
+      "color": "#69A513",
+      "name": "Hydroponic Root"
+    },
+    "Junk": {
+      "color": "black",
+      "name": "Junk"
+    },
+    "Ferrite Dust": {
+      "color": "#94BE75",
+      "name": "Ferrite Dust"
+    },
+    "Stellar Herb": {
+      "color": "#1692CF",
+      "name": "Stellar Herb"
+    },
+    "Cryocrystal": {
+      "color": "#30B6AC",
+      "name": "Cryocrystal"
+    },
+    "Cryopaste": {
+      "color": "#A0E8D7",
+      "name": "Cryopaste"
+    },
+    "Nebula Moss": {
+      "color": "#F19508",
+      "name": "Nebula Moss"
+    },
+    "Carbon Flakes": {
+      "color": "#C0896B",
+      "name": "Carbon Flakes"
+    },
+    "Fungi": {
+      "color": "#2BA871",
+      "name": "Fungi"
+    },
+    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317": {
+      "color": "#EA5218",
+      "name": "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317"
+    },
+    "Root Extract": {
+      "color": "#25F378",
+      "name": "Root Extract"
+    },
+    "Ground Root": {
+      "color": "#F4BD85",
+      "name": "Ground Root"
+    },
+    "Fine Ferrite Dust": {
+      "color": "#CFED57",
+      "name": "Fine Ferrite Dust"
+    },
+    "Ferrite Nuggets": {
+      "color": "#083946",
+      "name": "Ferrite Nuggets"
+    },
+    "Stellar Herb Extract": {
+      "color": "#1AC8B3",
+      "name": "Stellar Herb Extract"
+    },
+    "Ground Stellar Herb": {
+      "color": "#5EAD02",
+      "name": "Ground Stellar Herb"
+    },
+    "Cryocrystal Powder": {
+      "color": "#169F47",
+      "name": "Cryocrystal Powder"
+    },
+    "Activated Moss": {
+      "color": "#9FE485",
+      "name": "Activated Moss"
+    },
+    "Nebula Extract": {
+      "color": "#7EFB9C",
+      "name": "Nebula Extract"
+    },
+    "Carbon Fibrils": {
+      "color": "#237A0F",
+      "name": "Carbon Fibrils"
+    },
+    "Fungi Extract": {
+      "color": "#A215D4",
+      "name": "Fungi Extract"
+    },
+    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e": {
+      "color": "#9378D1",
+      "name": "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e"
+    },
+    "Root Concentrate": {
+      "color": "#207A4D",
+      "name": "Root Concentrate"
+    },
+    "Root Essence": {
+      "color": "#A42D10",
+      "name": "Root Essence"
+    },
+    "Finely Ground Root": {
+      "color": "#30A72F",
+      "name": "Finely Ground Root"
+    },
+    "Ferrite Weave": {
+      "color": "#7481EA",
+      "name": "Ferrite Weave"
+    },
+    "Ferrite Plate": {
+      "color": "#B68E34",
+      "name": "Ferrite Plate"
+    },
+    "Stellar Paste": {
+      "color": "#14DEC2",
+      "name": "Stellar Paste"
+    },
+    "Herb Essence": {
+      "color": "#F97635",
+      "name": "Herb Essence"
+    },
+    "Finely Ground Stellar Herb": {
+      "color": "#8DB1F6",
+      "name": "Finely Ground Stellar Herb"
+    },
+    "Cryocrystalline Shards": {
+      "color": "#6B82E5",
+      "name": "Cryocrystalline Shards"
+    },
+    "Nebula Moss Concentrate": {
+      "color": "#C491F0",
+      "name": "Nebula Moss Concentrate"
+    },
+    "Nebula Resin": {
+      "color": "#169453",
+      "name": "Nebula Resin"
+    },
+    "Nebula Essence": {
+      "color": "#5BE73F",
+      "name": "Nebula Essence"
+    },
+    "Carbon Sheet": {
+      "color": "#8BF4E1",
+      "name": "Carbon Sheet"
+    },
+    "Carbon Powder": {
+      "color": "#CBF3E1",
+      "name": "Carbon Powder"
+    },
+    "Fungi Essence": {
+      "color": "#4FDE1A",
+      "name": "Fungi Essence"
+    }
+  },
+  "staring_ingredients": [
+    "Hydroponic Root",
+    "Ferrite Dust",
+    "Stellar Herb",
+    "Cryocrystal",
+    "Cryopaste"
+  ]
+}
