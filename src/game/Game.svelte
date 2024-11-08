@@ -13,7 +13,7 @@
   let elementsTray = $state<HTMLElement>();
 </script>
 
-<FloatingElements {elementsTray} />
+<FloatingElements {elementsTray} {mergeGrid} />
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <main>

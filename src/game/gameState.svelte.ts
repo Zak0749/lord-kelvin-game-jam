@@ -1,4 +1,4 @@
-import { staring_ingredients, combinations, ingredients } from '../assets/elements.json'
+import { staring_ingredients, combinations, ingredients, machines } from '../assets/elements.json'
 
 
 export type GameElement = {
@@ -10,13 +10,29 @@ type ElementId = string;
 
 export type SpawnedElement = GameElement & { instance_id: number, x: number; y: number; width: number; height: number };
 
-export type DraggedElement = SpawnedElement & {offsetX: number, offsetY: number}
+export type DraggedElement = SpawnedElement & { offsetX: number, offsetY: number }
+
+export type PlacedMachine = {
+  name: string;
+  color: string;
+  rect: DOMRect
+}
+
 
 class GameState {
   private _showInstructions = $state(true);
   private _discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
   private _placedElements = $state<SpawnedElement[]>([]);
   private _draggingElement = $state<DraggedElement>();
+  private _machines = $state<PlacedMachine[]>(Object.values(machines).map((machine) => ({ ...machine, rect: new DOMRect() })));
+
+  get machines() {
+    return this._machines;
+  }
+
+  set machines(value: PlacedMachine[]) {
+    this._machines = value;
+  }
 
   get showInstructions() {
     return this._showInstructions;
@@ -96,4 +112,23 @@ export function spawn_element(element: GameElement & {x : number, y: number}): S
     }
 
     return { ...element, instance_id: id, width: 100, height: 100 };
+}
+
+type dict = { [key: string]: any };
+
+export function machineProcess(machine: PlacedMachine, element: SpawnedElement): ElementId | undefined {
+  let m = (machines as dict)[machine.name].actions;
+  console.log(m);
+
+  console.log(m[element.name])
+  
+  if (m[element.name]) {
+    if (!gameState.discoveredElementsIds.some((element) => element === m)) {
+      gameState.discoveredElementsIds.push(m);
+  }
+
+    return m[element.name] as ElementId;
+  } else {
+    return undefined;
+  }
 }

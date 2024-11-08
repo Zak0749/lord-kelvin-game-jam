@@ -7,34 +7,72 @@
     combineElements,
     get_element,
     spawn_element,
+    machineProcess,
   } from "./gameState.svelte";
   import { mouse_in_box, mouse_in_rect } from "./helpers";
+  import Machines from "./Machines.svelte";
 
-  // function moveDraggingElements(event: MouseEvent) {
-  //   console.log("dragging element", gameState.draggingElement);
-  //   gameState.placedElements
-  //     .filter((element) => element.instance_id == gameState.draggingElement)
-  //     .forEach((element) => {
-  //       element.x = event.clientX;
-  //       element.y = event.clientY;
-  //     });
-  // }
+  let {
+    elementsTray,
+    mergeGrid,
+  }: {
+    elementsTray: HTMLElement | undefined;
+    mergeGrid: HTMLElement | undefined;
+  } = $props();
 
-  let { elementsTray }: { elementsTray: HTMLElement | undefined } = $props();
+  function removeInstance(instance_id: number) {
+    let index = gameState.placedElements.findIndex(
+      (element) => element.instance_id === instance_id
+    );
+    if (index !== -1) {
+      gameState.placedElements.splice(index, 1);
+    }
+  }
 
   function letGoOfElement(event: MouseEvent) {
-    console.log(event);
-    // of mouse is in the elements Tray
-    if (elementsTray) {
-      if (mouse_in_rect(elementsTray.getBoundingClientRect(), event)) {
-        let index = gameState.placedElements.findIndex(
-          (el) => el.instance_id === gameState.draggingElement!.instance_id
-        );
-        if (index !== -1) {
-          gameState.placedElements.splice(index, 1);
-        }
-      }
+    if (!gameState.draggingElement) return;
+
+    if (
+      elementsTray &&
+      mouse_in_rect(elementsTray.getBoundingClientRect(), event)
+    ) {
+      removeInstance(gameState.draggingElement!.instance_id);
+      gameState.draggingElement = undefined;
+      return
     }
+
+    gameState.machines.forEach((machine) => {
+      console.log(
+        "fuck u time 2",
+        mouse_in_rect(machine.rect, event),
+        machine.name
+      );
+      if (mouse_in_rect(machine.rect, event)) {
+        let result = machineProcess(machine, gameState.draggingElement!);
+
+        let rect = mergeGrid!.getBoundingClientRect();
+
+        console.log(result);
+
+        if (result) {
+          removeInstance(gameState.draggingElement!.instance_id);
+
+          gameState.placedElements.push(
+            spawn_element({
+              ...get_element(result),
+              x: rect.left + rect.width / 2,
+              y: rect.top + rect.height / 2,
+            })
+          );
+        } else {
+          gameState.draggingElement!.x = rect.left + rect.width / 2;
+          gameState.draggingElement!.y = rect.top + rect.height / 2;
+        }
+
+        gameState.draggingElement = undefined;
+        return
+      }
+    });
 
     const elementUnderMouse = gameState.placedElements.find(
       (element) =>
@@ -42,33 +80,23 @@
         mouse_in_box(element, event)
     );
 
-    // mouse
-    console.log(elementUnderMouse);
     if (elementUnderMouse) {
-      let index = gameState.placedElements.findIndex(
-        (el) => el.instance_id === gameState.draggingElement!.instance_id
-      );
-      if (index !== -1) {
-        gameState.placedElements.splice(index, 1);
-      }
+      removeInstance(gameState.draggingElement!.instance_id);
+      removeInstance(elementUnderMouse.instance_id);
 
-      index = gameState.placedElements.findIndex(
-        (el) => el.instance_id === elementUnderMouse.instance_id
+      const combine = get_element(
+        combineElements(elementUnderMouse.name, gameState.draggingElement!.name)
       );
-      if (index !== -1) {
-        gameState.placedElements.splice(index, 1);
-      }
-
-      const combine = get_element(combineElements(
-              elementUnderMouse.name,
-              gameState.draggingElement!.name
-            ))
 
       gameState.placedElements.push(
         spawn_element({
           ...combine,
-          x: gameState.draggingElement!.x,
-          y: gameState.draggingElement!.y,
+          x:
+            gameState.draggingElement!.x +
+            gameState.draggingElement!.offsetX / 2,
+          y:
+            gameState.draggingElement!.y +
+            gameState.draggingElement!.offsetY / 2,
         })
       );
     }

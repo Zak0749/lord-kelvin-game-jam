@@ -44,9 +44,29 @@ with open('input.json') as file:
         output['machines'][action]['actions'][ingredient] = result
 
   for key, value in data['Recipes'].items():
+    val1, val2 = value
+
+    if val1 not in output['ingredients']:
+      output['ingredients'][val1] = {
+        'color': rand_hex(),
+        'name': val1
+      }
+
+    if val2 not in output['ingredients']:
+      output['ingredients'][val2] = {
+        'color': rand_hex(),
+        'name': val2
+      }
+
+    if key not in output['combinations']:
+      output['ingredients'][key] = {
+        'color': rand_hex(),
+        'name': key
+      }
+
     output['combinations'][':'.join(value)] = key
 
-  for value in data['StartingElements']:
+  for value in data['Starting']:
     output['staring_ingredients'].append(value)
   
 open('output.json', 'w').write(json.dumps(output, indent=2))

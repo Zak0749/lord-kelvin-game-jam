@@ -1,14 +1,12 @@
 <script lang="ts">
-  import { machines } from '../assets/elements.json'
+  import { gameState } from './gameState.svelte';
+  import Machine from './Machine.svelte';
 
 </script>
 
 <section>
-  {#each Object.values(machines) as machine}
-    <div class="machine">
-      <div class="square" style="--color: {machine.color}"></div>
-      <h3 class="name">{machine.name}</h3>
-    </div>
+  {#each gameState.machines as machine}
+    <Machine {machine} />
   {/each}
 </section>
 
@@ -25,21 +23,4 @@
     justify-content: space-around;
     align-items: center;
   }
-
-  .machine {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .square {
-    width: 50px;
-    height: 50px;
-    background-color: var(--color);
-  }
-   
-  h3 {
-    margin: 0;
-    margin-top: 5px;
-  }
-
-  </style>
+</style>
