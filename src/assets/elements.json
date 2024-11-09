@@ -685,5 +685,25 @@
     "Carbon Flakes",
     "Fungi",
     "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317"
+  ],
+  "scenarios": [
+    {
+      "name": "scenario 1",
+      "description": "Get the Hydroponic Root",
+      "expected": "Hydroponic Root",
+      "color": "#DAC01F"
+    },
+    {
+      "name": "scenario 2",
+      "description": "Get root extract",
+      "expected": "Root Extract",
+      "color": "#2896A1"
+    },
+    {
+      "name": "scenario 3",
+      "description": "Get the Oxygen Booster",
+      "expected": "Oxygen Booster",
+      "color": "#EF7214"
+    }
   ]
 }

@@ -30,7 +30,7 @@
       <p>Art - Leia</p>
       <p>Game Design - Mackenzie</p>
       <p>Programming - Zak</p>
-      <p>Music - EMIL</p>
+      <p>Music - Emil</p>
     </section>
 
 

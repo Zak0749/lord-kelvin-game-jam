@@ -97,6 +97,10 @@ button:hover {
   /* Glow effect */
 }
 
+h3 {
+  font-weight: 400;
+}
+
 body {
   text-align: center;
 }

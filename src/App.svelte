@@ -7,13 +7,16 @@
   import { appState } from "./appState.svelte";
   import OptionsMenu from "./options/OptionsMenu.svelte";
   import Game from "./game/Game.svelte";
+  import WinningScreen from "./gamewon/WinningScreen.svelte";
 </script>
 
 <div>
-  {#if appState.isPlaying}
+  {#if appState.gameState === 'playing'}
     <Game />
-  {:else}
+  {:else if appState.gameState === 'title'}
     <TitleScreen />
+  {:else}
+    <WinningScreen />
   {/if}
 </div>
 

@@ -1,4 +1,5 @@
-import { staring_ingredients, combinations, ingredients, machines } from '../assets/elements.json'
+import { appState } from '../appState.svelte';
+import { staring_ingredients, combinations, ingredients, machines, scenarios } from '../assets/elements.json'
 
 
 export type GameElement = {
@@ -18,67 +19,51 @@ export type PlacedMachine = {
   rect: DOMRect
 }
 
+type dict = { [key: string]: any };
+
+export type Scenario = {
+  name: string;
+  description: string;
+  color: string;
+  expected: ElementId;
+}
 
 class GameState {
-  private _showInstructions = $state(true);
-  private _discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
-  private _placedElements = $state<SpawnedElement[]>([]);
-  private _draggingElement = $state<DraggedElement>();
-  private _machines = $state<PlacedMachine[]>(Object.values(machines).map((machine) => ({ ...machine, rect: new DOMRect() })));
+  showInstructions = $state(true);
+  discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
+  placedElements = $state<SpawnedElement[]>([]);
+  draggingElement = $state<DraggedElement>();
+  discoveredElements = $derived(this.discoveredElementsIds.map(get_element))
+  
+  machines = $state<PlacedMachine[]>(Object.values(machines).map((machine) => ({ ...machine, rect: new DOMRect() })));
 
-  get machines() {
-    return this._machines;
+  #scenarioIndex = $state(0);
+
+
+  get scenarioIndex() {
+    return this.#scenarioIndex;
   }
 
-  set machines(value: PlacedMachine[]) {
-    this._machines = value;
+  set scenarioIndex(index: number) {
+    if (index == scenarios.length) {
+      appState.gameState = "won";
+      return
+    }
+
+    this.#scenarioIndex = index;
   }
 
-  get showInstructions() {
-    return this._showInstructions;
-  }
-
-  set showInstructions(value: boolean) {
-    this._showInstructions = value;
-  }
-
-  get discoveredElementsIds() {
-    return this._discoveredElementsIds;
-  }
-
-  get discoveredElements() {
-    return this._discoveredElementsIds.map((element) => get_element(element));
-  }
-
-  set discoveredElementsIds(value: ElementId[]) {
-    this._discoveredElementsIds = value;
-  }
-
-  get placedElements() {
-    return this._placedElements;
-  }
-
-  set placedElements(value: SpawnedElement[]) {
-    this._placedElements = value;
-  }
-
-  get draggingElement() {
-    return this._draggingElement;
-  }
-
-  set draggingElement(value: DraggedElement | undefined) { 
-    this._draggingElement = value;
-  }
+  scenario = $derived<Scenario>(scenarios[this.#scenarioIndex]);
 }
 
 export let gameState = new GameState();
 
 function searchMaps(element1: ElementId, element2: ElementId): ElementId | undefined {
-    let newElement = (combinations as {[key: string] : string})[`${element1}:${element2}`];
+    let newElement = (combinations as dict)[`${element1}:${element2}`];
     if (newElement) {
         return newElement;
     } else {
-        newElement = (combinations as {[key: string] : string})[`${element2}:${element1}`]
+        newElement = (combinations as dict)[`${element2}:${element1}`]
         if (newElement) {
             return newElement;
         } else {
@@ -98,11 +83,19 @@ export function combineElements(element1: ElementId, element2: ElementId): Eleme
         if (!gameState.discoveredElementsIds.some((element) => element === newElement)) {
             gameState.discoveredElementsIds.push(newElement);
         }
-
         return newElement;
     } else {
         return 'Junk';
     }
+}
+
+export function removeInstance(instance_id: number) {
+  let index = gameState.placedElements.findIndex(
+    (element) => element.instance_id === instance_id
+  );
+  if (index !== -1) {
+    gameState.placedElements.splice(index, 1);
+  }
 }
 
 export function spawn_element(element: GameElement & {x : number, y: number}): SpawnedElement {
@@ -114,19 +107,14 @@ export function spawn_element(element: GameElement & {x : number, y: number}): S
     return { ...element, instance_id: id, width: 100, height: 100 };
 }
 
-type dict = { [key: string]: any };
 
 export function machineProcess(machine: PlacedMachine, element: SpawnedElement): ElementId | undefined {
   let m = (machines as dict)[machine.name].actions;
-  console.log(m);
-
-  console.log(m[element.name])
   
   if (m[element.name]) {
-    if (!gameState.discoveredElementsIds.some((element) => element === m)) {
-      gameState.discoveredElementsIds.push(m);
+    if (!gameState.discoveredElementsIds.some((e) => e === m[element.name])) {
+      gameState.discoveredElementsIds.push(m[element.name]);
   }
-
     return m[element.name] as ElementId;
   } else {
     return undefined;

@@ -3,19 +3,18 @@
   import { gameState, get_element,
     spawn_element,
     type GameElement, } from "./gameState.svelte";
-
-  let { mergeGrid }: { mergeGrid: HTMLElement | undefined } = $props();
+  import { center_of_element } from './helpers'
+  import { gameUI } from './GameUI.svelte'
 
   function placeElement(element: GameElement) {
-    if (mergeGrid) {
-      let rect = mergeGrid.getBoundingClientRect();
-      let spawned_element = spawn_element({
-        ...element,
-        x: rect.left + rect.width / 2,
-        y: rect.top + rect.height / 2,
-      });
-      gameState.placedElements.push(spawned_element);
-    }
+    if (!gameUI.mergeGrid) return;
+
+    let spawned_element = spawn_element({
+      ...element,
+      ...center_of_element(gameUI.mergeGrid)
+    });
+    gameState.placedElements.push(spawned_element);
+    
   }
 </script>
 

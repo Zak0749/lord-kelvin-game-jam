@@ -5,14 +5,11 @@
 
 {#if gameState.showInstructions}
   <section>
-    <img class="person-img" src={person} alt="person" />
+    <div style="background-color: {gameState.scenario.color}" class="person-img"></div>
     <div class="person-desc">
-      <h2>Paul Holywood</h2>
+      <h2>{gameState.scenario.name}</h2>
       <p>
-        Long description of a recipe that is being prepared. It is a cake
-        firstly you will need to mix the ingredients of: flour, sugar, eggs, and
-        milk. Then you will need to bake it in the oven for 30 minutes. Finally,
-        you will need to let it cool down before serving.
+        {gameState.scenario.description}
       </p>
     </div>
   </section>
@@ -21,6 +18,7 @@
 <style>
   .person-img {
     height: 150px;
+    min-width: 150px;
     border-radius: 50%;
     margin-right: 1rem;
   }

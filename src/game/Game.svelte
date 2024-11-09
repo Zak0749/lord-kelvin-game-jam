@@ -7,13 +7,16 @@
   import FloatingElements from "./FloatingElements.svelte";
   import { gameState } from "./gameState.svelte";
   import SubmitElements from "./SubmitElements.svelte";
+  import { gameUI } from "./GameUI.svelte";
 
   let mergeGrid = $state<HTMLElement>();
 
   let elementsTray = $state<HTMLElement>();
+
+
 </script>
 
-<FloatingElements {elementsTray} {mergeGrid} />
+<FloatingElements  />
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <main>
@@ -21,23 +24,23 @@
     <Header />
   </header>
 
-  <aside class="element-tray" bind:this={elementsTray}>
-    <ElementsTray {mergeGrid} />
+  <aside class="element-tray" bind:this={gameUI.elementsTray}>
+    <ElementsTray />
   </aside>
 
-  <section class="instructions">
+  <section class="instructions" bind:this={gameUI.instructions}>
     <Instructions />
   </section>
 
-  <aside class="submit-area">
+  <aside class="submit-area" bind:this={gameUI.submitArea}>
     <SubmitElements />
   </aside>
 
-  <section class="machines">
+  <section class="machines" >
     <Machines />
   </section>
 
-  <section class="merge-grid" bind:this={mergeGrid}>
+  <section class="merge-grid" bind:this={gameUI.mergeGrid}>
     <MergeGrid />
   </section>
 </main>

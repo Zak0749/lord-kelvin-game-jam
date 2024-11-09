@@ -4,13 +4,8 @@
 </script>
 
 <header>
-  <button onclick={() => (appState.isPlaying = false)}> Back to title </button>
-  <!-- <button
-    onclick={() => (gameState.showInstructions = !gameState.showInstructions)}
-  >
-    {gameState.showInstructions ? "Hide" : "Show"} Prompt
-  </button> -->
-  <button onclick={() => (appState.optionsMenuOpen = true)}> Options </button>
+  <button onclick={() => appState.gameState = 'title'} > Back to title </button>
+  <button onclick={() => appState.optionsMenuOpen = true} > Options </button>
 </header>
 
 <style>

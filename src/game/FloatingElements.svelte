@@ -1,5 +1,6 @@
 <script lang="ts">
   import ElementCard from "./ElementCard.svelte";
+  import ElementsTray from "./ElementsTray.svelte";
   import {
     gameState,
     type DraggedElement,
@@ -8,71 +9,43 @@
     get_element,
     spawn_element,
     machineProcess,
+    removeInstance,
   } from "./gameState.svelte";
-  import { mouse_in_box, mouse_in_rect } from "./helpers";
-  import Machines from "./Machines.svelte";
-
-  let {
-    elementsTray,
-    mergeGrid,
-  }: {
-    elementsTray: HTMLElement | undefined;
-    mergeGrid: HTMLElement | undefined;
-  } = $props();
-
-  function removeInstance(instance_id: number) {
-    let index = gameState.placedElements.findIndex(
-      (element) => element.instance_id === instance_id
-    );
-    if (index !== -1) {
-      gameState.placedElements.splice(index, 1);
-    }
-  }
+  import {
+    center_of_element,
+    mouse_in_box,
+    mouse_in_element,
+    mouse_in_rect,
+  } from "./helpers";
+  import { gameUI } from "./GameUI.svelte";
 
   function letGoOfElement(event: MouseEvent) {
-    if (!gameState.draggingElement) return;
+    if (!gameState.draggingElement || !gameUI.mergeGrid || !gameUI.elementsTray || !gameUI.submitArea) return;
 
-    if (
-      elementsTray &&
-      mouse_in_rect(elementsTray.getBoundingClientRect(), event)
-    ) {
-      removeInstance(gameState.draggingElement!.instance_id);
-      gameState.draggingElement = undefined;
-      return
+    let returnToGrid = true;
+
+    if (mouse_in_element(gameUI.elementsTray, event)) {
+      removeInstance(gameState.draggingElement.instance_id);
+      returnToGrid = false;
     }
 
-    gameState.machines.forEach((machine) => {
-      console.log(
-        "fuck u time 2",
-        mouse_in_rect(machine.rect, event),
-        machine.name
-      );
-      if (mouse_in_rect(machine.rect, event)) {
-        let result = machineProcess(machine, gameState.draggingElement!);
+    // If the element is dropped in a machine, process it
+    gameState.machines
+      .filter((machine) => mouse_in_rect(machine.rect, event))
+      .map((machine) => machineProcess(machine, gameState.draggingElement!))
+      .filter((result) => result !== undefined)
+      .forEach((result) => {
+        removeInstance(gameState.draggingElement!.instance_id);
 
-        let rect = mergeGrid!.getBoundingClientRect();
+        gameState.placedElements.push(
+          spawn_element({
+            ...get_element(result!),
+            ...center_of_element(gameUI.mergeGrid!),
+          })
+        );
 
-        console.log(result);
-
-        if (result) {
-          removeInstance(gameState.draggingElement!.instance_id);
-
-          gameState.placedElements.push(
-            spawn_element({
-              ...get_element(result),
-              x: rect.left + rect.width / 2,
-              y: rect.top + rect.height / 2,
-            })
-          );
-        } else {
-          gameState.draggingElement!.x = rect.left + rect.width / 2;
-          gameState.draggingElement!.y = rect.top + rect.height / 2;
-        }
-
-        gameState.draggingElement = undefined;
-        return
-      }
-    });
+        returnToGrid = false;
+      });
 
     const elementUnderMouse = gameState.placedElements.find(
       (element) =>
@@ -80,6 +53,7 @@
         mouse_in_box(element, event)
     );
 
+    // If the element is dropped on another element, combine them
     if (elementUnderMouse) {
       removeInstance(gameState.draggingElement!.instance_id);
       removeInstance(elementUnderMouse.instance_id);
@@ -99,6 +73,27 @@
             gameState.draggingElement!.offsetY / 2,
         })
       );
+
+      returnToGrid = false;
+    }
+
+    if (mouse_in_element(gameUI.submitArea, event)) {
+      if (gameState.draggingElement!.name == gameState.scenario.expected) {
+        returnToGrid = false;
+        removeInstance(gameState.draggingElement.instance_id);
+        console.log("stuff happening")
+        gameState.scenarioIndex += 1;
+      }
+    }
+
+    if (mouse_in_element(gameUI.mergeGrid!, event)) {
+      returnToGrid = false;
+    }
+
+    if (returnToGrid) {
+      const center = center_of_element(gameUI.mergeGrid);
+      gameState.draggingElement!.x = center.x;
+      gameState.draggingElement!.y = center.y;
     }
 
     gameState.draggingElement = undefined;
@@ -131,7 +126,10 @@
   <!-- svelte-ignore a11y_mouse_events_have_key_events -->
   <div
     class="floating-element"
-    style="left: {element.x}px; top: {element.y}px"
+    style="left: {element.x}px; top: {element.y}px; z-index: {gameState.draggingElement ===
+    element
+      ? 2
+      : 1}"
     id={element.instance_id.toString()}
     onmousedowncapture={(event) => {
       const rect = event.currentTarget.getBoundingClientRect();
