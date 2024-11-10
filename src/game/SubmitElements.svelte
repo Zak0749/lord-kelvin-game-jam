@@ -9,12 +9,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: grey;
-    border: lightgrey solid 1px;
-    border-radius: 10px;
   }
 </style>
 
-<div class="full-screen">
+<div class="full-screen game-element">
   Send off
 </div>

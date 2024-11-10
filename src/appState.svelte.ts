@@ -1,6 +1,12 @@
+import { gameState } from "./game/gameState.svelte";
+import { scenarios } from './assets/elements.json'
+
+
 class AppState {
-    gameState: "title" | "playing" | "won" = $state("title");
+    gameState: "menu" | "playing" = $state("menu");
     optionsMenuOpen = $state(false);
+    completedGame = $derived(gameState.scenarioReached === scenarios.length - 1);
+    name = 'Galactic Alchemy';
 }
 
 export let appState = new AppState();

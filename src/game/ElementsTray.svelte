@@ -18,7 +18,7 @@
   }
 </script>
 
-<div>
+<div class="game-element">
   <ul>
     {#each gameState.discoveredElements as element}
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
@@ -46,9 +46,6 @@
 
   div {
     padding: 10px;
-    background-color: grey;
-    border: lightgrey solid 1px;
-    border-radius: 10px;
     height: 100%;
   }
 

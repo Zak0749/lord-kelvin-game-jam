@@ -8,6 +8,7 @@
   import { gameState } from "./gameState.svelte";
   import SubmitElements from "./SubmitElements.svelte";
   import { gameUI } from "./GameUI.svelte";
+  import SendOffPopup from "./SendOffPopup.svelte";
 
   let mergeGrid = $state<HTMLElement>();
 
@@ -15,6 +16,8 @@
 
 
 </script>
+
+<SendOffPopup />
 
 <FloatingElements  />
 
@@ -50,7 +53,7 @@
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-rows: 50px 2fr 1fr 5fr;
+    grid-template-rows: 36px 2fr 1fr 5fr;
     grid-template-columns: 3fr 5fr 2fr;
     padding: 1rem;
     gap: 1rem;

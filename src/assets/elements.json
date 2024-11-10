@@ -691,19 +691,25 @@
       "name": "scenario 1",
       "description": "Get the Hydroponic Root",
       "expected": "Hydroponic Root",
-      "color": "#DAC01F"
+      "color": "#DAC01F",
+      "correctDescription": "Omg thank you so much :D",
+      "wrongDescription": "Wtf is this?! What am i paying for :("
     },
     {
       "name": "scenario 2",
-      "description": "Get root extract",
+      "description": "Obtain Root Extract",
       "expected": "Root Extract",
-      "color": "#2896A1"
+      "color": "#2896A1",
+      "correctDescription": "Thank you so much! This is exactly what I needed.",
+      "wrongDescription": "This isn't what I was looking for. Please try again."
     },
     {
       "name": "scenario 3",
       "description": "Get the Oxygen Booster",
       "expected": "Oxygen Booster",
-      "color": "#EF7214"
+      "color": "#EF7214",
+      "correctDescription": "Oxygen go bRRRRrrr",
+      "wrongDescription": "I can't breathe! I need the Oxygen Booster! You're killing me!"
     }
   ]
 }

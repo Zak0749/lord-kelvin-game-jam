@@ -5,34 +5,26 @@
 </script>
 
 <main>
-  <div class="title">
-    <h1>You Win</h1>
-    <p style="color:#00ffff">Thank You For Playing</p>
-  </div>
+  <h1 class="title">You fulfilled all requests!</h1>
 
-  <div class="split-grid">
-    <img src={station} alt="Space Station" height="200" />
+  <section style="padding-top: 5rem;">
+    <h2 style="color:var(--primary-color)">{appState.name}</h2>
+    <p>Game made by Lord Kelvin Fan Club</p>
+    <p>Art - Leia</p>
+    <p>Game Design - Mackenzie</p>
+    <p>Programming - Zak</p>
+    <p>Music - Emil</p>
+  </section>
 
-    <section>
-      <ul class="flex-list">
-        <button onclick={() => (appState.gameState = 'playing')} class="pixel-border"> Restart Game </button>
-        <button onclick={() => (appState.optionsMenuOpen = true)}> Options </button>
-      </ul>
+  <ul class="flex-list" style="padding-top: 10rem">
+    <button class="text-button" onclick={() => (appState.gameState = 'playing')}> Restart Game </button>
 
-      <section>
-        <h2>Credits</h2>
-        <p>Game made by Lord Kelvin Fan Club</p>
-        <p>Art - Leia</p>
-        <p>Game Design - Mackenzie</p>
-        <p>Programming - Zak</p>
-        <p>Music - Emil</p>
-      </section>
-    </section>
-  </div>
+  </ul>
+
 </main>
 
 <style>
-  main {
+    main {
     background-image: url("../assets/background.jpg");
     width: 100vw;
     height: 100vh;
@@ -43,6 +35,7 @@
 
   img {
     animation: bob 2s infinite;
+    
   }
 
   @keyframes bob {
@@ -54,38 +47,58 @@
       }
     }
 
-  h1 {
-    font-size: 4rem;
-  }
-
-  h1, h2, p {
+  h1, p {
     margin: 0;
     padding: 0;
+
     /* animation-timing-function: linear ease-in-out, linear, step-start, linear */
 
   }
   .title {
     padding-top: 5rem;
+    font-size: 4rem;
 
-    animation: rotate 3s infinite linear;
+    
 
+    animation-name: rotate, scale;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    animation-duration: 3s;
+  }
+
+  @keyframes scale {
+    0% {
+      scale: 1;
+    }
+
+    25% {
+      scale: 1.2;
+    }
+
+    50% {
+      scale: 1;
+    }
+
+    75% {
+      scale: 1.2;
+    }
+
+    100% {
+      scale: 1;
+    }
   }
 
   @keyframes rotate {
     0% {
-      transform: rotate(0deg);
+      rotate: -10deg;
     }
-    25% {
-      transform: rotate(20deg);
-    }
+
     50% {
-      transform: rotate(0deg);
+      rotate: 10deg ;
     }
-    75% {
-      transform: rotate(-20deg);
-    }
+
     100% {
-      transform: rotate(0deg);
+      rotate: -10deg;
     }
   }
 
@@ -102,6 +115,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    align-items: center;
   }
 
   .flex-list button {

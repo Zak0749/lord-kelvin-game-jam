@@ -4,7 +4,7 @@
 
 </script>
 
-<section>
+<section class="game-element">
   {#each gameState.machines as machine}
     <Machine {machine} />
   {/each}
@@ -14,11 +14,7 @@
   section {
     display: flex;
     gap: 1.5rem;
-    padding: 10px;
     list-style: none;
-    background-color: grey;
-    border: lightgrey solid 1px;
-    border-radius: 10px;
     height: 100%;
     justify-content: space-around;
     align-items: center;

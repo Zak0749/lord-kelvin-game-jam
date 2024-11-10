@@ -26,6 +26,8 @@ export type Scenario = {
   description: string;
   color: string;
   expected: ElementId;
+  correctDescription: string;
+  wrongDescription: string;
 }
 
 class GameState {
@@ -33,11 +35,39 @@ class GameState {
   discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
   placedElements = $state<SpawnedElement[]>([]);
   draggingElement = $state<DraggedElement>();
+
+
   discoveredElements = $derived(this.discoveredElementsIds.map(get_element))
+  scenarioReached = $state(0)
+
+  constructor() {
+    let storedDiscoveredElements = localStorage.getItem('discoveredElements');
+    if (storedDiscoveredElements) {
+      this.discoveredElementsIds = JSON.parse(storedDiscoveredElements);
+    }
+
+    let storedScenarioReached = localStorage.getItem('scenarioReached');
+    if (storedScenarioReached) {
+      this.scenarioReached = parseInt(storedScenarioReached);
+    }
+
+    $effect.root(() => {
+      $effect(() => {
+        localStorage.setItem('discoveredElements', JSON.stringify(this.discoveredElementsIds));
+      })
+
+      $effect(() => {
+        localStorage.setItem('scenarioReached', this.scenarioReached.toString());
+      })
+    })
+  }
+  
   
   machines = $state<PlacedMachine[]>(Object.values(machines).map((machine) => ({ ...machine, rect: new DOMRect() })));
 
   #scenarioIndex = $state(0);
+
+  showResults = $state<'correct' | 'error' | 'none'>();
 
 
   get scenarioIndex() {
@@ -45,8 +75,12 @@ class GameState {
   }
 
   set scenarioIndex(index: number) {
+    if (index > this.scenarioReached) {
+      this.scenarioReached = index;
+    }
+
     if (index == scenarios.length) {
-      appState.gameState = "won";
+      appState.gameState = "menu";
       return
     }
 

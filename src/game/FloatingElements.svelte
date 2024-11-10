@@ -81,8 +81,9 @@
       if (gameState.draggingElement!.name == gameState.scenario.expected) {
         returnToGrid = false;
         removeInstance(gameState.draggingElement.instance_id);
-        console.log("stuff happening")
-        gameState.scenarioIndex += 1;
+        gameState.showResults = 'correct'
+      } else {
+        gameState.showResults = 'error'
       }
     }
 

@@ -4,7 +4,7 @@
 </script>
 
 {#if gameState.showInstructions}
-  <section>
+  <section class="game-element">
     <div style="background-color: {gameState.scenario.color}" class="person-img"></div>
     <div class="person-desc">
       <h2>{gameState.scenario.name}</h2>
@@ -25,10 +25,6 @@
 
   section {
     margin: 0;
-    padding: 1rem;
-    background-color: grey;
-    border: lightgrey solid 1px;
-    border-radius: 10px;
     height: 100%;
     width: 100%;
     display: flex;
