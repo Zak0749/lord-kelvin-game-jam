@@ -21,7 +21,7 @@
 {/if}
 
 <main>
-  <header style="height: 32px; padding: 1rem; padding-bottom: 5rem">
+  <header style="height: 32px; padding: 1rem; padding-bottom: 10rem">
     <button
       onclick={() => (appState.optionsMenuOpen = true)}
       class="icon-button"
@@ -100,8 +100,6 @@
     /* animation-timing-function: linear ease-in-out, linear, step-start, linear */
   }
   .title {
-    font-size: 4rem;
-
     animation-name: rotate, scale;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;

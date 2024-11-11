@@ -18,6 +18,8 @@ output = {
   'staring_ingredients': []
 }
 
+count = 0
+
 with open('input.json') as file:
   data = json.load(file)
 
@@ -26,6 +28,8 @@ with open('input.json') as file:
       'color': rand_hex(),
       'name': ingredient
     }
+
+    count += 1
 
     output['ingredients']['Junk'] = {
       'color': 'black',
@@ -51,22 +55,29 @@ with open('input.json') as file:
         'color': rand_hex(),
         'name': val1
       }
+      count += 1
+
 
     if val2 not in output['ingredients']:
       output['ingredients'][val2] = {
         'color': rand_hex(),
         'name': val2
       }
+      count += 1
+
 
     if key not in output['combinations']:
       output['ingredients'][key] = {
         'color': rand_hex(),
         'name': key
       }
+      count += 1
 
     output['combinations'][':'.join(value)] = key
 
   for value in data['Starting']:
     output['staring_ingredients'].append(value)
+
+print(count)
   
-open('output.json', 'w').write(json.dumps(output, indent=2))
+# open('output.json', 'w').write(json.dumps(output, indent=2))

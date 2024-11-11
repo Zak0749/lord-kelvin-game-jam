@@ -25,8 +25,8 @@
     align-items: center;
   }
   .square {
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
     background-color: var(--color);
   }
    

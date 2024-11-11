@@ -10,13 +10,13 @@
     }
   })
 
-  let height = $state(20);
-  let w = $state(20);
+  let height = $state(32);
+  let w = $state(32);
 </script>
 
 
 <div class="element" bind:clientHeight="{height}" bind:clientWidth="{w}" style="cursor: {(element as SpawnedElement).width ? 'grab' : 'pointer'} !important">
-  <div class="square" style="--color: {element.color}"></div>
+  <div class="square" style="--background-color: {element.color}"></div>
   <h3 class="name">{element.name}</h3>
 </div>
 
@@ -30,9 +30,10 @@
 
   }
   .square {
-    width: 20px;
-    height: 20px;
-    background-color: var(--color);
+    width: 32px;
+    height: 32px;
+    /* background-color: var(--background-color); */
+    background-image: url(../assets/elements/fungi_essence.png);
   }
   
   h3 {

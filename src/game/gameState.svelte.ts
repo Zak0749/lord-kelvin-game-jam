@@ -79,7 +79,7 @@ class GameState {
       this.scenarioReached = index;
     }
 
-    if (index == scenarios.length) {
+    if (index >= scenarios.length) {
       appState.gameState = "menu";
       return
     }

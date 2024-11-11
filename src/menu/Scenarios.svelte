@@ -21,7 +21,7 @@
 
 <section>
   <ul>
-    {#each Array((gameState.scenarioReached + 1)) as _, i}
+    {#each Array((get_num())) as _, i}
       <button class="text-button" onclick={() => gotoScenario(i)}>Scenario {i + 1}</button>
     {/each}
   </ul>
