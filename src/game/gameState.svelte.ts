@@ -1,5 +1,7 @@
+import { Sound } from 'svelte-sound';
 import { appState } from '../appState.svelte';
 import { staring_ingredients, combinations, ingredients, machines, scenarios } from '../assets/elements.json'
+import { options } from '../options/options.svelte';
 
 
 export type GameElement = {
@@ -30,6 +32,24 @@ export type Scenario = {
   wrongDescription: string;
 }
 
+const messageList = [
+  null,
+  null,
+  "Oh no! Looks parts of the message was corrupted, you will need to try to work out the correct combination.",
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null
+]
+
 class GameState {
   showInstructions = $state(true);
   discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
@@ -39,6 +59,11 @@ class GameState {
 
   discoveredElements = $derived(this.discoveredElementsIds.map(get_element))
   scenarioReached = $state(0)
+
+  popup = $state({
+    show: false,
+    message: '',
+  })
 
   constructor() {
     let storedDiscoveredElements = localStorage.getItem('discoveredElements');
@@ -82,6 +107,11 @@ class GameState {
     if (index >= scenarios.length) {
       appState.gameState = "menu";
       return
+    }
+
+    if (messageList[index]) {
+      this.popup.show = true;
+      this.popup.message = messageList[index];
     }
 
     this.#scenarioIndex = index;

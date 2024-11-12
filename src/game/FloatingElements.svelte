@@ -18,6 +18,7 @@
     mouse_in_rect,
   } from "./helpers";
   import { gameUI } from "./GameUI.svelte";
+  import { sendOff, useExtractor, useGrinder } from "../soundEffects.svelte";
 
   function timeout(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -32,6 +33,8 @@
     )
       return;
 
+    let dragging = gameState.draggingElement;
+
     let returnToGrid = true;
 
     if (mouse_in_element(gameUI.elementsTray, event)) {
@@ -42,10 +45,18 @@
     // If the element is dropped in a machine, process it
     gameState.machines
       .filter((machine) => mouse_in_rect(machine.rect, event))
-      .map((machine) => machineProcess(machine, gameState.draggingElement!))
-      .filter((result) => result !== undefined)
-      .forEach((result) => {
+      .map((machine) => ({ machine, result: machineProcess(machine, gameState.draggingElement!) }))
+      .filter((f) => f.result !== undefined)
+      .forEach(({ machine, result }) => {
         removeInstance(gameState.draggingElement!.instance_id);
+
+        if (machine.name == 'Extractor') {
+          useExtractor.play();
+        } else if (machine.name == 'Grinder') {
+          useGrinder.play();
+        } else {
+          useExtractor.play();
+        }
 
         gameState.placedElements.push(
           spawn_element({
@@ -72,9 +83,18 @@
         combineElements(elementUnderMouse.name, gameState.draggingElement!.name)
       );
 
-      console.log(combine);
+      let animation_position_x =  gameState.draggingElement!.x - gameState.draggingElement!.width / 2;
+      let animation_position_y = gameState.draggingElement!.y - gameState.draggingElement!.height / 2;
 
       if (combine) {
+        mergeAnimation.do = true;
+        mergeAnimation.x =animation_position_x;
+        mergeAnimation.y = animation_position_y;
+
+        setTimeout(() => {
+          mergeAnimation.do = false;
+        }, 500);
+
         gameState.placedElements.push(
           spawn_element({
             ...combine,
@@ -88,13 +108,12 @@
         );
       } else {
         explodeAnimation.do = true;
-        explodeAnimation.x = event.clientX;
-        explodeAnimation.y = event.clientY;
+        explodeAnimation.x = animation_position_x;
+        explodeAnimation.y = animation_position_y;
 
         setTimeout(() => {
           explodeAnimation.do = false;
-        }, 500)
-
+        }, 500);
       }
 
       returnToGrid = false;
@@ -109,6 +128,11 @@
       gameState.draggingElement = undefined;
       gameState.closeDoorAnimation = true;
 
+
+      console.log("playing")
+      sendOff.play();
+
+
       await timeout(1000);
 
       if (element.name == gameState.scenario.expected) {
@@ -122,8 +146,8 @@
 
     if (returnToGrid) {
       const center = center_of_element(gameUI.mergeGrid);
-      gameState.draggingElement!.x = center.x;
-      gameState.draggingElement!.y = center.y;
+      dragging.x = center.x;
+      dragging.y = center.y;
     }
 
     gameState.draggingElement = undefined;
@@ -152,10 +176,14 @@
   let explodeAnimation = $state({
     do: false,
     x: 0,
-    y: 0
+    y: 0,
   });
 
-  $inspect(explodeAnimation);
+  let mergeAnimation = $state({
+    do: false,
+    x: 0,
+    y: 0,
+  });
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -187,6 +215,12 @@
   style="left: {explodeAnimation.x}px; top: {explodeAnimation.y}px;"
 ></div>
 
+<div
+  class="merge-animation"
+  class:doAnimation={mergeAnimation.do}
+  style="left: {mergeAnimation.x}px; top: {mergeAnimation.y}px;"
+></div>
+
 <style>
   @keyframes explode {
     0% {
@@ -212,12 +246,47 @@
     height: 100px;
     background-color: rgb(229, 136, 50);
     border-radius: 50%;
-    z-index: 10;
+    z-index: -1;
     opacity: 0;
   }
 
   .explode-animation.doAnimation {
     animation: explode 0.5s forwards;
+    z-index: 10;
+  }
+
+  @keyframes merge {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 10px 10px rgba(255, 255, 255, 1);
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+      box-shadow: 0 0 20px 20px rgba(255, 255, 255, 0.5);
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+      box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0);
+    }
+  }
+
+  .merge-animation {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  .merge-animation.doAnimation {
+    animation: merge 0.5s forwards;
+    z-index: 10;
+
   }
 
   .floating-element {

@@ -2,6 +2,23 @@
   import { gameState } from "./gameState.svelte";
 </script>
 
+<div
+  class="full-screen game-element"
+  style="position: relative; z-index: 2; overflow:hidden;"
+>
+  <div
+    class="door"
+    class:door-left={gameState.closeDoorAnimation}
+    class:door-left-open={!gameState.closeDoorAnimation}
+  ></div>
+  <div
+    class="door"
+    class:door-right={gameState.closeDoorAnimation}
+    class:door-right-open={!gameState.closeDoorAnimation}
+  ></div>
+  <div>Send off</div>
+</div>
+
 <style>
   .full-screen {
     width: 100%;
@@ -94,9 +111,3 @@
     }
   }
 </style>
-
-<div class="full-screen game-element" style="position: relative; z-index: 2; overflow:hidden;">
-  <div class="door" class:door-left={gameState.closeDoorAnimation} class:door-left-open={!gameState.closeDoorAnimation}></div>
-  <div class="door" class:door-right={gameState.closeDoorAnimation} class:door-right-open={!gameState.closeDoorAnimation}></div>
-  <div>Send off</div>
-</div>

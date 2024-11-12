@@ -1,10 +1,13 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { Sound } from 'svelte-sound';
   import type { PlacedMachine } from "./gameState.svelte";
+  import { createSound } from "../soundEffects.svelte";
 
   let { machine} : { machine: PlacedMachine } = $props();
 
   let element = $state<HTMLElement>();
+
 
   $effect(() => {
     if (element) {

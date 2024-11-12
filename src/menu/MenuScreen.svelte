@@ -2,11 +2,14 @@
   import { appState } from "../appState.svelte";
   import station from "../assets/space-station.png";
   import { gameState } from "../game/gameState.svelte";
+  import { buttonClick } from "../soundEffects.svelte";
+  // import { buttonClick } from "../soundEffects.svelte";
   import Scenarios from "./Scenarios.svelte";
 
   let showLevels = $state(false);
 
   function startPlay() {
+    buttonClick.play();
     if (appState.completedGame) {
       gameState.scenarioIndex = 0;
     }
@@ -23,7 +26,7 @@
 <main>
   <header style="height: 32px; padding: 1rem; padding-bottom: 10rem">
     <button
-      onclick={() => (appState.optionsMenuOpen = true)}
+      onclick={() => { buttonClick.play(); appState.optionsMenuOpen = true; }}
       class="icon-button"
       aria-label="Open Options Menu"
     >
@@ -46,6 +49,12 @@
     {appState.completedGame ? "You fulfilled all requests!" : appState.name}
   </h1>
 
+  {#if appState.completedGame}
+    <p style="color: var(--primary-color); padding-top: 5rem">
+      You are now a member of the coolest and most exclusive club in the galaxy - the Lord Kelvin Fan Club!
+    </p>
+  {/if}
+
   <div class="split-grid">
     <img src={station} alt="Space Station" height="128" />
 
@@ -54,12 +63,20 @@
         {appState.completedGame ? "Restart Game" : "Start Game"}
       </button>
       {#if gameState.scenarioReached > 0}
-        <button class="text-button" onclick={() => (showLevels = true)}>
+        <button class="text-button" onclick={() => { buttonClick.play(); showLevels = true }}>
           Scenarios
         </button>
       {/if}
     </ul>
   </div>
+
+  <section style="padding-top: 5rem;" >
+    <h3 style="color: var(--primary-color)">Game made by Lord Kelvin Fan Club</h3>
+    <p>Art - Leia</p>
+    <p>Game Design - Mackenzie</p>
+    <p>Programming - Zak</p>
+    <p>Music - Emil</p>
+  </section>
 </main>
 
 <style>

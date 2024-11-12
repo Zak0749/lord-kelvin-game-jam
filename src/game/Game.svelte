@@ -9,6 +9,7 @@
   import SubmitElements from "./SubmitElements.svelte";
   import { gameUI } from "./GameUI.svelte";
   import SendOffPopup from "./SendOffPopup.svelte";
+  import PopUp from "./popUp.svelte";
 
   let mergeGrid = $state<HTMLElement>();
 
@@ -20,6 +21,8 @@
 <SendOffPopup />
 
 <FloatingElements  />
+
+<PopUp />
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
 <main>

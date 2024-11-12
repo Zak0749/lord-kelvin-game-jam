@@ -9,6 +9,7 @@
   import Game from "./game/Game.svelte";
   import theme from './assets/theme.mp3';
   import { options } from "./options/options.svelte";
+  // @ts-ignore
 </script>
 
 <audio src="{theme}" autoplay volume="{options.calculated_music_volume}"></audio>

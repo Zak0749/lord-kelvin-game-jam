@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
   import { appState } from "../appState.svelte";
-  import { options } from './options.svelte'
+  import { buttonClick } from "../soundEffects.svelte";
+  import { options } from "./options.svelte";
 
   function reset_progress() {
+    buttonClick.play();
     localStorage.clear();
     location.reload();
   }
@@ -11,23 +13,48 @@
 <section>
   <ul>
     <section>
-      
       <div>
-        Main Volume: <input type="range" min="0" max="1" step="0.05" bind:value="{options.main_volume}" class="slider" />
+        Main Volume: <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={options.main_volume}
+          class="slider"
+        />
       </div>
 
       <div>
-        Music Volume: <input type="range" min="0" max="1" step="0.05" bind:value="{options.music_volume}" class="slider" />
+        Music Volume: <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={options.music_volume}
+          class="slider"
+        />
       </div>
 
       <div>
-        SFX Volume: <input type="range" min="0" max="1" step="0.05" bind:value="{options.sfx_volume}" class="slider" />
+        SFX Volume: <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.05"
+          bind:value={options.sfx_volume}
+          class="slider"
+        />
       </div>
 
-      <button style="margin-top: 5rem" class="text-button" onclick={reset_progress}> Reset Progress </button>
+      <button
+        style="margin-top: 5rem"
+        class="text-button"
+        onclick={reset_progress}
+      >
+        Reset Progress
+      </button>
     </section>
 
-    
     <section style="padding-top: 5rem;">
       <h2 style="color:var(--primary-color)">{appState.name}</h2>
       <p>Game made by Lord Kelvin Fan Club</p>
@@ -37,8 +64,15 @@
       <p>Music - Emil</p>
     </section>
 
-
-    <button class="text-button" onclick={() => (appState.optionsMenuOpen = false)}> Close </button>
+    <button
+      class="text-button"
+      onclick={() => {
+        buttonClick.play();
+        appState.optionsMenuOpen = false;
+      }}
+    >
+      Close
+    </button>
   </ul>
 </section>
 
@@ -54,15 +88,12 @@
     height: 2rem;
     border-radius: 1rem;
     padding-left: 1rem;
-    padding-right: 1rem
-
+    padding-right: 1rem;
   }
 
   input[type="range"]:hover {
     opacity: 1;
-  } 
-
-  
+  }
 
   ul {
     max-width: 500px;
@@ -75,8 +106,8 @@
     border-radius: 8px; /* Rounded corners */
     outline: none; /* Remove outline */
     transition:
-    box-shadow 0.3s ease,
-    border-color 0.3s ease; /* Smooth transition */
+      box-shadow 0.3s ease,
+      border-color 0.3s ease; /* Smooth transition */
     display: flex;
     flex-direction: column;
     justify-content: space-between;

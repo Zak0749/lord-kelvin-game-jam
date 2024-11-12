@@ -2,10 +2,12 @@
   import { gameState } from "../game/gameState.svelte";
   import { appState } from "../appState.svelte";
   import { scenarios } from '../assets/elements-old.json'
+  import { buttonClick } from "../soundEffects.svelte";
 
   let {closePopup}: { closePopup: () => void } = $props()
 
   function gotoScenario(i: number) {
+    buttonClick.play();
     gameState.scenarioIndex = i;
     appState.gameState = "playing";
   }
@@ -27,7 +29,7 @@
   </ul>
   
 
-  <button class="text-button" onclick={closePopup}> Close </button>
+  <button class="text-button" onclick={() => { buttonClick.play(); closePopup() }}> Close </button>
 </section>
 
 <style>

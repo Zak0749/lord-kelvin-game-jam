@@ -1,14 +1,17 @@
 <script>
   import { appState } from "../appState.svelte";
+  import { buttonClick } from "../soundEffects.svelte";
   import { gameState } from "./gameState.svelte";
 
   function next() {
+    buttonClick.play();
     gameState.scenarioIndex += 1;
     gameState.closeDoorAnimation = false;
     gameState.showResults = "none";
   }
 
   function back() {
+    buttonClick.play();
     gameState.closeDoorAnimation = false;
     gameState.showResults = "none"
   }

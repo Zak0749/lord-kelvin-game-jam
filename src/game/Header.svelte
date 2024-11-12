@@ -1,10 +1,11 @@
 <script lang="ts">
   import { gameState } from "./gameState.svelte";
   import { appState } from "../appState.svelte";
+  import { buttonClick } from "../soundEffects.svelte";
 </script>
 
 <header>
-  <button onclick={() => (appState.gameState = "menu")} class="icon-button" aria-label="settings">
+  <button onclick={() => { appState.gameState = "menu"; buttonClick.play()}} class="icon-button" aria-label="settings">
     <svg
       
       width="24px"
@@ -19,7 +20,7 @@
       />
     </svg>
   </button>
-  <button onclick={() => (appState.optionsMenuOpen = true)} class="icon-button" aria-label="back">
+  <button onclick={() => { appState.optionsMenuOpen = true; buttonClick.play()}} class="icon-button" aria-label="back">
     <svg
       
       width="24px"
