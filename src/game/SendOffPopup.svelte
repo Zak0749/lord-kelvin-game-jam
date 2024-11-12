@@ -4,7 +4,13 @@
 
   function next() {
     gameState.scenarioIndex += 1;
+    gameState.closeDoorAnimation = false;
     gameState.showResults = "none";
+  }
+
+  function back() {
+    gameState.closeDoorAnimation = false;
+    gameState.showResults = "none"
   }
 </script>
 
@@ -49,7 +55,7 @@
 
       <button
         class="text-button"
-        onclick={() => (gameState.showResults = "none")}
+        onclick={back}
       >
         Close
       </button>

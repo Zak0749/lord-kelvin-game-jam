@@ -47,7 +47,7 @@
   </h1>
 
   <div class="split-grid">
-    <img src={station} alt="Space Station" height="200" />
+    <img src={station} alt="Space Station" height="128" />
 
     <ul class="flex-list">
       <button class="text-button" onclick={startPlay}>

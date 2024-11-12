@@ -180,5 +180,5 @@ body {
   display: grid;
   place-items: center;
   top: 0;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }

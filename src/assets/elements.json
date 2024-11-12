@@ -1,704 +1,180 @@
 {
   "machines": {
-    "Extractor": {
-      "color": "#6B3AD9",
-      "actions": {
-        "Hydroponic Root": "Root Extract",
-        "Stellar Herb": "Stellar Herb Extract",
-        "Nebula Moss": "Nebula Extract",
-        "Fungi": "Fungi Extract",
-        "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317": "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e",
-        "Root Extract": "Root Essence",
-        "Ground Root": "Root Essence",
-        "Ground Stellar Herb": "Herb Essence",
-        "Activated Moss": "Nebula Moss Concentrate",
-        "Nebula Extract": "Nebula Essence",
-        "Fungi Extract": "Fungi Essence"
+      "Extractor": {
+          "color": "#6B3AD9",
+          "actions": {
+          "Hydroponic Root": "Root Essence",
+          "Fungi": "Fungi Essence",
+          "Ferrite Dust": "Pure Ferrite",
+          "Fungi Essence": "Fertilising Paste",
+          "Ground Root": "Fertilising Paste",
+          "Fertilising Paste": "Growth Agent"
+          },
+          "name": "Extractor"
       },
-      "name": "Extractor"
-    },
-    "Grinder": {
-      "color": "#6479F2",
-      "actions": {
-        "Hydroponic Root": "Ground Root",
-        "Ferrite Dust": "Fine Ferrite Dust",
-        "Stellar Herb": "Ground Stellar Herb",
-        "Cryocrystal": "Cryocrystal Powder",
-        "Ground Root": "Finely Ground Root",
-        "Ground Stellar Herb": "Finely Ground Stellar Herb",
-        "Carbon Fibrils": "Carbon Powder"
+      "Grinder": {
+          "color": "#6479F2",
+          "actions": {
+          "Hydroponic Root": "Ground Root",
+          "Fungi": "Ground Fungi",
+          "Healing Herb": "Ground Healing Herb"
+          },
+          "name": "Grinder"
       },
-      "name": "Grinder"
-    },
-    "Heater": {
-      "color": "#A469ED",
-      "actions": {
-        "Ferrite Dust": "Ferrite Nuggets",
-        "Cryocrystal": "Cryopaste",
-        "Nebula Moss": "Activated Moss",
-        "Carbon Flakes": "Carbon Fibrils",
-        "Root Extract": "Root Concentrate",
-        "Fine Ferrite Dust": "Ferrite Weave",
-        "Ferrite Nuggets": "Ferrite Plate",
-        "Stellar Herb Extract": "Stellar Paste",
-        "Cryocrystal Powder": "Cryocrystalline Shards",
-        "Nebula Extract": "Nebula Resin",
-        "Carbon Fibrils": "Carbon Sheet"
-      },
-      "name": "Heater"
-    }
+      "Heater": {
+          "color": "#A469ED",
+          "actions": {
+          "Ground Fungi": "Activated Fungi",
+          "Ferrite Dust": "Steel",
+          "Ferrite Carbon": "Carbon Steel",
+          "Carbon Flakes": "Carbon Sheet",
+          "Ground Healing Herb": "Activated Healing Herb"
+          },
+          "name": "Heater"
+      }
   },
   "combinations": {
-    "Ferrite Dust:Nebula Extract": "Anti-Radiation Shield",
-    "Cryocrystal:Activated Moss": "Life Support Supplement",
-    "Cryocrystal Powder:Cryopaste": "Hyperdrive Enhancer",
-    "Nebula Moss:Hydroponic Root": "Atmospheric Cleaner",
-    "Stellar Herb:Ground Root": "Nutrient Enrichment",
-    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Carbon Fibrils": "Alien Detoxifier",
-    "Fungi:Nebula Extract": "Bio-Rejuvenation Tonic",
-    "Ferrite Plate:Ferrite Weave": "Shield Strengthener",
-    "Cryocrystal:Hydroponic Root": "Optical Fluid",
-    "Fungi Essence:Nebula Resin": "Medicinal Balm",
-    "Cryocrystalline Shards:Ferrite Nuggets": "Thermal Coat",
-    "Activated Moss:Ground Stellar Herb": "Space Detox Drink",
-    "Carbon Sheet:Ferrite Weave": "Super Adhesive",
-    "Root Extract:Fungi Extract": "Organic Shield",
-    "Nebula Extract:Cryocrystal Powder": "Healing Ointment",
-    "Ferrite Dust:Stellar Herb Extract": "Radiation Barrier",
-    "Cryocrystal:Root Essence": "Oxygen Booster",
-    "Cryocrystal Powder:Ground Root": "Engine Coolant",
-    "Nebula Moss:Ferrite Plate": "Air Purifier",
-    "Stellar Herb:Cryopaste": "Growth Enhancer",
-    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e:Ferrite Weave": "Alien Remedy",
-    "Fungi:Root Extract": "Bio-Revitalizer",
-    "Ferrite Plate:Cryocrystal Powder": "Shield Coating",
-    "Cryocrystal:Stellar Herb Extract": "Visual Aid",
-    "Fungi Essence:Cryopaste": "Healing Gel",
-    "Cryocrystalline Shards:Root Concentrate": "Heat Shield",
-    "Activated Moss:Ground Root": "Space Cleanser",
-    "Carbon Sheet:Ground Stellar Herb": "Binding Agent",
-    "Root Extract:Ferrite Dust": "Organic Armor",
-    "Nebula Extract:Root Essence": "Restorative Cream",
-    "Ferrite Dust:Stellar Paste": "Radiation Coating",
-    "Cryocrystal:Nebula Moss Concentrate": "Air Refresher",
-    "Cryocrystal Powder:Carbon Fibrils": "Coolant Paste",
-    "Nebula Moss:Cryocrystal Powder": "Atmospheric Reagent",
-    "Stellar Herb:Cryocrystalline Shards": "Plant Fertilizer",
-    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e:Stellar Herb Extract": "Alien Cure",
-    "Fungi:Activated Moss": "Bio-Elixir",
-    "Ferrite Plate:Ground Root": "Shield Layer",
-    "Cryocrystal:Nebula Essence": "Optical Solution",
-    "Fungi Essence:Stellar Herb Extract": "Healing Potion",
-    "Cryocrystalline Shards:Ferrite Weave": "Thermal Barrier",
-    "Activated Moss:Cryocrystal Powder": "Space Purifier",
-    "Carbon Sheet:Fungi Extract": "Sealing Compound",
-    "Root Extract:Cryopaste": "Organic Booster",
-    "Nebula Extract:Stellar Herb Extract": "Regenerative Balm",
-    "Ferrite Dust:Root Extract": "Radiation Shield",
-    "Cryocrystal:Ground Stellar Herb": "Oxygenator",
-    "Cryocrystal Powder:Nebula Moss": "Engine Lubricant",
-    "Nebula Moss:Fungi Essence": "Atmosphere Stabilizer",
-    "Stellar Herb:Cryocrystal": "Plant Tonic",
-    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317:Ground Stellar Herb": "Alien Medicine",
-    "Fungi:Cryocrystal Powder": "Bio-Restorer",
-    "Ferrite Plate:Cryocrystalline Shards": "Shield Hardener",
-    "Cryocrystal:Stellar Paste": "Optical Enhancer",
-    "Fungi Essence:Root Extract": "Healing Remedy",
-    "Cryocrystalline Shards:Stellar Herb Extract": "Thermal Wrap",
-    "Activated Moss:Ferrite Dust": "Space Sanitizer",
-    "Carbon Sheet:Ground Root": "Bonding Agent",
-    "Root Extract:Ferrite Plate": "Organic Armor Booster",
-    "Nebula Extract:Ground Stellar Herb": "Restorative Lotion",
-    "Ferrite Dust:Nebula Resin": "Energy Coating",
-    "Cryocrystal:Ground Root": "Oxygen Enhancer",
-    "Cryocrystal Powder:Ferrite Plate": "Coolant Gel",
-    "Nebula Moss:Cryocrystalline Shards": "Atmosphere Enricher",
-    "Stellar Herb:Activated Moss": "Plant Booster",
-    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e:Cryocrystal Powder": "Alien Treatment",
-    "Fungi:Ferrite Dust": "Bio-Tonic",
-    "Ferrite Plate:Root Essence": "Shield Fortifier",
-    "Cryocrystal:Ferrite Nuggets": "Optical Booster",
-    "Fungi Essence:Cryocrystal Powder": "Healing Elixir",
-    "Cryocrystalline Shards:Fungi Extract": "Thermal Guard",
-    "Activated Moss:Cryocrystal": "Space Cleaner",
-    "Carbon Sheet:Root Essence": "Super Bond",
-    "Root Extract:Activated Moss": "Organic Shield Enhancer",
-    "Nebula Extract:Ground Root": "Rejuvenation Balm",
-    "Cryocrystal Powder:Fungi Essence": "Engine Shield",
-    "Nebula Moss:Ferrite Nuggets": "Atmosphere Cleaner",
-    "Stellar Herb:Carbon Powder": "Plant Growth Serum",
-    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e:Root Concentrate": "Alien Elixir",
-    "Fungi:Cryocrystalline Shards": "Bio-Serum",
-    "Cryocrystal:Carbon Fibrils": "Optical Enhancing Fluid",
-    "Fungi Essence:Nebula Extract": "Healing Draught",
-    "Cryocrystalline Shards:Carbon Sheet": "Thermal Buffer",
-    "Activated Moss:Ferrite Plate": "Space Detoxifier",
-    "Carbon Sheet:Cryocrystal": "High-Bond Adhesive",
-    "Root Extract:Cryocrystal Powder": "Organic Fortifier",
-    "Nebula Extract:Ferrite Weave": "Rejuvenation Cream",
-    "Ferrite Dust:Ground Root": "Radiation Armor",
-    "Cryocrystal:Carbon Sheet": "Oxygen Infuser",
-    "Cryocrystal Powder:Cryocrystalline Shards": "Engine Fortifier",
-    "Nebula Moss:Carbon Powder": "Atmosphere Purifier",
-    "Stellar Herb:Cryocrystal Powder": "Plant Enhancer"
+      "Hydroponic Root:Fungi": "Biological Enhancer",
+      "Carbon Flakes:Pure Ferrite": "Ferrite Carbon",
+      "Ferrite Carbon:Biological Enhancer": "Oxygen Booster",
+      "Biological Enhancer:Activated Fungi": "Healing Herb",
+      "Ground Fungi:Root Essence": "Perfume",
+      "Fungi Essence:Ground Root": "Fertilising Paste",
+      "Activated Fungi:Oxygen Booster": "Inhaler",
+      "Fertilising Paste:Steel": "Hydroponic Tower",
+      "Activated Healing Herb:Inhaler": "Medicinal Inhaler",
+      "Carbon Sheet:Ground Healing Herb": "Injector",
+      "Carbon Steel:Oxygen Booster": "Life Support"
   },
   "ingredients": {
-    "Hydroponic Root": {
-      "color": "#DAC01F",
-      "name": "Hydroponic Root"
-    },
-    "Junk": {
-      "color": "black",
-      "name": "Junk"
-    },
-    "Ferrite Dust": {
-      "color": "#0F3175",
-      "name": "Ferrite Dust"
-    },
-    "Stellar Herb": {
-      "color": "#598B3C",
-      "name": "Stellar Herb"
-    },
-    "Cryocrystal": {
-      "color": "#F8745A",
-      "name": "Cryocrystal"
-    },
-    "Cryopaste": {
-      "color": "#0248D9",
-      "name": "Cryopaste"
-    },
-    "Nebula Moss": {
-      "color": "#C4930E",
-      "name": "Nebula Moss"
-    },
-    "Carbon Flakes": {
-      "color": "#6273D5",
-      "name": "Carbon Flakes"
-    },
-    "Fungi": {
-      "color": "#1DA79F",
-      "name": "Fungi"
-    },
-    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317": {
-      "color": "#501E87",
-      "name": "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317"
-    },
-    "Root Extract": {
-      "color": "#2896A1",
-      "name": "Root Extract"
-    },
-    "Ground Root": {
-      "color": "#A12793",
-      "name": "Ground Root"
-    },
-    "Fine Ferrite Dust": {
-      "color": "#FEB156",
-      "name": "Fine Ferrite Dust"
-    },
-    "Ferrite Nuggets": {
-      "color": "#418FBC",
-      "name": "Ferrite Nuggets"
-    },
-    "Stellar Herb Extract": {
-      "color": "#0B5DA2",
-      "name": "Stellar Herb Extract"
-    },
-    "Ground Stellar Herb": {
-      "color": "#57809C",
-      "name": "Ground Stellar Herb"
-    },
-    "Cryocrystal Powder": {
-      "color": "#4F6AC1",
-      "name": "Cryocrystal Powder"
-    },
-    "Activated Moss": {
-      "color": "#2BD507",
-      "name": "Activated Moss"
-    },
-    "Nebula Extract": {
-      "color": "#BE2637",
-      "name": "Nebula Extract"
-    },
-    "Carbon Fibrils": {
-      "color": "#B5C08D",
-      "name": "Carbon Fibrils"
-    },
-    "Fungi Extract": {
-      "color": "#3E7654",
-      "name": "Fungi Extract"
-    },
-    "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e": {
-      "color": "#2B0F79",
-      "name": "E\u0338\u030b\u031cs\u0338\u0306\u0340\u035d\u0328\u0319s\u0337\u0307\u0342\u030f\u0323\u0332\u0345e\u0338\u0303\u0315\u031c\u032c\u0323n\u0336\u0315\u0329c\u0337\u0305\u033c\u0331e\u0337\u0300\u031a\u0355\u034e"
-    },
-    "Root Concentrate": {
-      "color": "#8EB5F9",
-      "name": "Root Concentrate"
-    },
-    "Root Essence": {
-      "color": "#E13A5D",
-      "name": "Root Essence"
-    },
-    "Finely Ground Root": {
-      "color": "#F1EC85",
-      "name": "Finely Ground Root"
-    },
-    "Ferrite Weave": {
-      "color": "#06EF34",
-      "name": "Ferrite Weave"
-    },
-    "Ferrite Plate": {
-      "color": "#A9E840",
-      "name": "Ferrite Plate"
-    },
-    "Stellar Paste": {
-      "color": "#DB8AE4",
-      "name": "Stellar Paste"
-    },
-    "Herb Essence": {
-      "color": "#AEC840",
-      "name": "Herb Essence"
-    },
-    "Finely Ground Stellar Herb": {
-      "color": "#245C7D",
-      "name": "Finely Ground Stellar Herb"
-    },
-    "Cryocrystalline Shards": {
-      "color": "#E584A6",
-      "name": "Cryocrystalline Shards"
-    },
-    "Nebula Moss Concentrate": {
-      "color": "#5A2481",
-      "name": "Nebula Moss Concentrate"
-    },
-    "Nebula Resin": {
-      "color": "#02BE3D",
-      "name": "Nebula Resin"
-    },
-    "Nebula Essence": {
-      "color": "#BE1D6A",
-      "name": "Nebula Essence"
-    },
-    "Carbon Sheet": {
-      "color": "#B0DAF6",
-      "name": "Carbon Sheet"
-    },
-    "Carbon Powder": {
-      "color": "#7B65D3",
-      "name": "Carbon Powder"
-    },
-    "Fungi Essence": {
-      "color": "#843D09",
-      "name": "Fungi Essence"
-    },
-    "Anti-Radiation Shield": {
-      "color": "#203C9E",
-      "name": "Anti-Radiation Shield"
-    },
-    "Life Support Supplement": {
-      "color": "#274803",
-      "name": "Life Support Supplement"
-    },
-    "Hyperdrive Enhancer": {
-      "color": "#DE3C47",
-      "name": "Hyperdrive Enhancer"
-    },
-    "Atmospheric Cleaner": {
-      "color": "#D0FCB1",
-      "name": "Atmospheric Cleaner"
-    },
-    "Nutrient Enrichment": {
-      "color": "#4C213A",
-      "name": "Nutrient Enrichment"
-    },
-    "Alien Detoxifier": {
-      "color": "#89DC4F",
-      "name": "Alien Detoxifier"
-    },
-    "Bio-Rejuvenation Tonic": {
-      "color": "#AB82DF",
-      "name": "Bio-Rejuvenation Tonic"
-    },
-    "Shield Strengthener": {
-      "color": "#8EC6B1",
-      "name": "Shield Strengthener"
-    },
-    "Optical Fluid": {
-      "color": "#A348D1",
-      "name": "Optical Fluid"
-    },
-    "Medicinal Balm": {
-      "color": "#A02FEC",
-      "name": "Medicinal Balm"
-    },
-    "Thermal Coat": {
-      "color": "#87304A",
-      "name": "Thermal Coat"
-    },
-    "Space Detox Drink": {
-      "color": "#16B3A9",
-      "name": "Space Detox Drink"
-    },
-    "Super Adhesive": {
-      "color": "#ED86F9",
-      "name": "Super Adhesive"
-    },
-    "Organic Shield": {
-      "color": "#9574A3",
-      "name": "Organic Shield"
-    },
-    "Healing Ointment": {
-      "color": "#304985",
-      "name": "Healing Ointment"
-    },
-    "Radiation Barrier": {
-      "color": "#CA5146",
-      "name": "Radiation Barrier"
-    },
-    "Oxygen Booster": {
-      "color": "#EF7214",
-      "name": "Oxygen Booster"
-    },
-    "Engine Coolant": {
-      "color": "#2E419F",
-      "name": "Engine Coolant"
-    },
-    "Air Purifier": {
-      "color": "#E21DAB",
-      "name": "Air Purifier"
-    },
-    "Growth Enhancer": {
-      "color": "#642F13",
-      "name": "Growth Enhancer"
-    },
-    "Alien Remedy": {
-      "color": "#2E9FD4",
-      "name": "Alien Remedy"
-    },
-    "Bio-Revitalizer": {
-      "color": "#C8F067",
-      "name": "Bio-Revitalizer"
-    },
-    "Shield Coating": {
-      "color": "#156BF7",
-      "name": "Shield Coating"
-    },
-    "Visual Aid": {
-      "color": "#FEB823",
-      "name": "Visual Aid"
-    },
-    "Healing Gel": {
-      "color": "#149E03",
-      "name": "Healing Gel"
-    },
-    "Heat Shield": {
-      "color": "#8AE46D",
-      "name": "Heat Shield"
-    },
-    "Space Cleanser": {
-      "color": "#8E69F2",
-      "name": "Space Cleanser"
-    },
-    "Binding Agent": {
-      "color": "#8E3760",
-      "name": "Binding Agent"
-    },
-    "Organic Armor": {
-      "color": "#8731DE",
-      "name": "Organic Armor"
-    },
-    "Restorative Cream": {
-      "color": "#65EBF7",
-      "name": "Restorative Cream"
-    },
-    "Energy Shield": {
-      "color": "#E835B2",
-      "name": "Energy Shield"
-    },
-    "Air Refresher": {
-      "color": "#59FE14",
-      "name": "Air Refresher"
-    },
-    "Coolant Paste": {
-      "color": "#120BF5",
-      "name": "Coolant Paste"
-    },
-    "Atmospheric Reagent": {
-      "color": "#65DE2C",
-      "name": "Atmospheric Reagent"
-    },
-    "Plant Fertilizer": {
-      "color": "#6EFB08",
-      "name": "Plant Fertilizer"
-    },
-    "Alien Cure": {
-      "color": "#F786E2",
-      "name": "Alien Cure"
-    },
-    "Bio-Elixir": {
-      "color": "#2AE359",
-      "name": "Bio-Elixir"
-    },
-    "Shield Enhancer": {
-      "color": "#4AED73",
-      "name": "Shield Enhancer"
-    },
-    "Optical Solution": {
-      "color": "#843D51",
-      "name": "Optical Solution"
-    },
-    "Healing Potion": {
-      "color": "#80BCAE",
-      "name": "Healing Potion"
-    },
-    "Thermal Barrier": {
-      "color": "#9E1CAD",
-      "name": "Thermal Barrier"
-    },
-    "Space Purifier": {
-      "color": "#72C39F",
-      "name": "Space Purifier"
-    },
-    "Sealing Compound": {
-      "color": "#068F43",
-      "name": "Sealing Compound"
-    },
-    "Organic Booster": {
-      "color": "#4CF79E",
-      "name": "Organic Booster"
-    },
-    "Regenerative Balm": {
-      "color": "#9E06B5",
-      "name": "Regenerative Balm"
-    },
-    "Radiation Shield": {
-      "color": "#A59C0B",
-      "name": "Radiation Shield"
-    },
-    "Oxygenator": {
-      "color": "#B6F704",
-      "name": "Oxygenator"
-    },
-    "Engine Lubricant": {
-      "color": "#DBE369",
-      "name": "Engine Lubricant"
-    },
-    "Atmosphere Stabilizer": {
-      "color": "#57FA86",
-      "name": "Atmosphere Stabilizer"
-    },
-    "Plant Tonic": {
-      "color": "#5468E9",
-      "name": "Plant Tonic"
-    },
-    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317": {
-      "color": "#2A7194",
-      "name": "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u030d\u0324\u0331s\u0336\u0313\u034d\u0317"
-    },
-    "Alien Medicine": {
-      "color": "#CDB041",
-      "name": "Alien Medicine"
-    },
-    "Bio-Restorer": {
-      "color": "#A01827",
-      "name": "Bio-Restorer"
-    },
-    "Shield Hardener": {
-      "color": "#7E2D36",
-      "name": "Shield Hardener"
-    },
-    "Optical Enhancer": {
-      "color": "#BD9102",
-      "name": "Optical Enhancer"
-    },
-    "Healing Remedy": {
-      "color": "#80C3A7",
-      "name": "Healing Remedy"
-    },
-    "Thermal Wrap": {
-      "color": "#578912",
-      "name": "Thermal Wrap"
-    },
-    "Space Sanitizer": {
-      "color": "#5F1CED",
-      "name": "Space Sanitizer"
-    },
-    "Bonding Agent": {
-      "color": "#A086C9",
-      "name": "Bonding Agent"
-    },
-    "Organic Armor Booster": {
-      "color": "#8EA6B3",
-      "name": "Organic Armor Booster"
-    },
-    "Restorative Lotion": {
-      "color": "#2D7F0A",
-      "name": "Restorative Lotion"
-    },
-    "Energy Coating": {
-      "color": "#D58F2B",
-      "name": "Energy Coating"
-    },
-    "Air Freshener": {
-      "color": "#BE1056",
-      "name": "Air Freshener"
-    },
-    "Coolant Gel": {
-      "color": "#9BE541",
-      "name": "Coolant Gel"
-    },
-    "Atmosphere Enricher": {
-      "color": "#D6EC2B",
-      "name": "Atmosphere Enricher"
-    },
-    "Plant Booster": {
-      "color": "#65A91E",
-      "name": "Plant Booster"
-    },
-    "Alien Treatment": {
-      "color": "#5DAECB",
-      "name": "Alien Treatment"
-    },
-    "Bio-Tonic": {
-      "color": "#C03549",
-      "name": "Bio-Tonic"
-    },
-    "Shield Fortifier": {
-      "color": "#2A8F4E",
-      "name": "Shield Fortifier"
-    },
-    "Optical Booster": {
-      "color": "#89B01F",
-      "name": "Optical Booster"
-    },
-    "Healing Elixir": {
-      "color": "#82F547",
-      "name": "Healing Elixir"
-    },
-    "Thermal Guard": {
-      "color": "#4EF1B3",
-      "name": "Thermal Guard"
-    },
-    "Space Cleaner": {
-      "color": "#CD7B48",
-      "name": "Space Cleaner"
-    },
-    "Super Bond": {
-      "color": "#DB20C5",
-      "name": "Super Bond"
-    },
-    "Organic Shield Enhancer": {
-      "color": "#4B7E9C",
-      "name": "Organic Shield Enhancer"
-    },
-    "Rejuvenation Balm": {
-      "color": "#CA48E6",
-      "name": "Rejuvenation Balm"
-    },
-    "Radiation Coating": {
-      "color": "#4DC6E8",
-      "name": "Radiation Coating"
-    },
-    "Oxygen Enhancer": {
-      "color": "#54E908",
-      "name": "Oxygen Enhancer"
-    },
-    "Engine Shield": {
-      "color": "#107E94",
-      "name": "Engine Shield"
-    },
-    "Atmosphere Cleaner": {
-      "color": "#32ED8F",
-      "name": "Atmosphere Cleaner"
-    },
-    "Plant Growth Serum": {
-      "color": "#ADB562",
-      "name": "Plant Growth Serum"
-    },
-    "Alien Elixir": {
-      "color": "#E57D2C",
-      "name": "Alien Elixir"
-    },
-    "Bio-Serum": {
-      "color": "#B5F619",
-      "name": "Bio-Serum"
-    },
-    "Shield Layer": {
-      "color": "#CB5436",
-      "name": "Shield Layer"
-    },
-    "Optical Enhancing Fluid": {
-      "color": "#6CE084",
-      "name": "Optical Enhancing Fluid"
-    },
-    "Healing Draught": {
-      "color": "#DE32F7",
-      "name": "Healing Draught"
-    },
-    "Thermal Buffer": {
-      "color": "#A0C3B2",
-      "name": "Thermal Buffer"
-    },
-    "Space Detoxifier": {
-      "color": "#41ABC6",
-      "name": "Space Detoxifier"
-    },
-    "High-Bond Adhesive": {
-      "color": "#749B1C",
-      "name": "High-Bond Adhesive"
-    },
-    "Organic Fortifier": {
-      "color": "#B5ED12",
-      "name": "Organic Fortifier"
-    },
-    "Rejuvenation Cream": {
-      "color": "#5D9A27",
-      "name": "Rejuvenation Cream"
-    },
-    "Radiation Armor": {
-      "color": "#3B1D50",
-      "name": "Radiation Armor"
-    },
-    "Oxygen Infuser": {
-      "color": "#3F27A8",
-      "name": "Oxygen Infuser"
-    },
-    "Engine Fortifier": {
-      "color": "#71E458",
-      "name": "Engine Fortifier"
-    },
-    "Atmosphere Purifier": {
-      "color": "#F25307",
-      "name": "Atmosphere Purifier"
-    },
-    "Plant Enhancer": {
-      "color": "#C7A958",
-      "name": "Plant Enhancer"
-    }
+      "Hydroponic Root": {
+          "color": "#DAC01F",
+          "name": "Hydroponic Root"
+      },
+      "Fungi": {
+          "color": "#1DA79F",
+          "name": "Fungi"
+      },
+      "Ferrite Dust": {
+          "color": "#0F3175",
+          "name": "Ferrite Dust"
+      },
+      "Pure Ferrite": {
+          "color": "#418FBC",
+          "name": "Pure Ferrite"
+      },
+      "Ferrite Carbon": {
+          "color": "#FEB156",
+          "name": "Ferrite Carbon"
+      },
+      "Carbon Flakes": {
+          "color": "#6273D5",
+          "name": "Carbon Flakes"
+      },
+      "Carbon Sheet": {
+          "color": "#B0DAF6",
+          "name": "Carbon Sheet"
+      },
+      "Carbon Steel": {
+          "color": "#7B65D3",
+          "name": "Carbon Steel"
+      },
+      "Oxygen Booster": {
+          "color": "#89DC4F",
+          "name": "Oxygen Booster"
+      },
+      "Biological Enhancer": {
+          "color": "#2BD507",
+          "name": "Biological Enhancer"
+      },
+      "Healing Herb": {
+          "color": "#DB8AE4",
+          "name": "Healing Herb"
+      },
+      "Activated Fungi": {
+          "color": "#3E7654",
+          "name": "Activated Fungi"
+      },
+      "Ground Fungi": {
+          "color": "#A02FEC",
+          "name": "Ground Fungi"
+      },
+      "Root Essence": {
+          "color": "#E13A5D",
+          "name": "Root Essence"
+      },
+      "Ground Root": {
+          "color": "#A12793",
+          "name": "Ground Root"
+      },
+      "Fungi Essence": {
+          "color": "#843D09",
+          "name": "Fungi Essence"
+      },
+      "Perfume": {
+          "color": "#A348D1",
+          "name": "Perfume"
+      },
+      "Fertilising Paste": {
+          "color": "#AEC840",
+          "name": "Fertilising Paste"
+      },
+      "Inhaler": {
+          "color": "#4F6AC1",
+          "name": "Inhaler"
+      },
+      "Hydroponic Tower": {
+          "color": "#2B0F79",
+          "name": "Hydroponic Tower"
+      },
+      "Steel": {
+          "color": "#B5C08D",
+          "name": "Steel"
+      },
+      "Ground Healing Herb": {
+          "color": "#57809C",
+          "name": "Ground Healing Herb"
+      },
+      "Activated Healing Herb": {
+          "color": "#DB8AE4",
+          "name": "Activated Healing Herb"
+      },
+      "Medicinal Inhaler": {
+          "color": "#02BE3D",
+          "name": "Medicinal Inhaler"
+      },
+      "Injector": {
+          "color": "#501E87",
+          "name": "Injector"
+      },
+      "Life Support": {
+          "color": "#BE1D6A",
+          "name": "Life Support"
+      },
+      "Growth Agent": {
+          "color": "#DAC01F",
+          "name": "Growth Agent"
+      }
   },
   "staring_ingredients": [
-    "Hydroponic Root",
-    "Ferrite Dust",
-    "Stellar Herb",
-    "Cryocrystal",
-    "Nebula Moss",
-    "Carbon Flakes",
-    "Fungi",
-    "S\u0335\u035d\u033d\u033e\u0321\u0347\u035cp\u0337\u0342\u032a\u032a\u033bo\u0338\u034c\u0303\u0322\u033c\u031er\u0336\u035d\u0333\u0318\u0356e\u0338\u0344\u0304\u030d\u0324\u0331s\u0336\u0313\u034d\u0317"
+      "Hydroponic Root",
+      "Ferrite Dust",
+      "Carbon Flakes",
+      "Fungi"
   ],
   "scenarios": [
     {
       "name": "scenario 1",
-      "description": "Get the Hydroponic Root",
+      "description": "Drag the Hydroponic Root to the Send Off Box",
       "expected": "Hydroponic Root",
       "color": "#DAC01F",
-      "correctDescription": "Omg thank you so much :D",
-      "wrongDescription": "Wtf is this?! What am i paying for :("
+      "correctDescription": "Well Done.",
+      "wrongDescription": "Wrong."
     },
     {
       "name": "scenario 2",
-      "description": "Obtain Root Extract",
-      "expected": "Root Extract",
+      "description": "Obtain Root Essence",
+      "expected": "Root Essence",
       "color": "#2896A1",
       "correctDescription": "Thank you so much! This is exactly what I needed.",
       "wrongDescription": "This isn't what I was looking for. Please try again."
@@ -710,6 +186,111 @@
       "color": "#EF7214",
       "correctDescription": "Oxygen go bRRRRrrr",
       "wrongDescription": "I can't breathe! I need the Oxygen Booster! You're killing me!"
+    },
+    {
+      "name": "scenario 4",
+      "description": "Create the Ground Root using the Grinder",
+      "expected": "Ground Root",
+      "color": "#A12793",
+      "correctDescription": "Good job! The Ground Root is ready.",
+      "wrongDescription": "That's not the Ground Root. Please try again."
+    },
+    {
+      "name": "scenario 5",
+      "description": "Extract Fungi Essence from Fungi",
+      "expected": "Fungi Essence",
+      "color": "#843D09",
+      "correctDescription": "Perfect! The Fungi Essence is here.",
+      "wrongDescription": "This isn't the Fungi Essence. Please try again."
+    },
+    {
+      "name": "scenario 6",
+      "description": "Create Steel by heating Ferrite Dust",
+      "expected": "Steel",
+      "color": "#B5C08D",
+      "correctDescription": "Nice work! The Steel is ready.",
+      "wrongDescription": "This isn't the Steel. Please try again."
+    },
+    {
+      "name": "scenario 7",
+      "description": "Produce Ferrite Carbon by combining Ferrite Dust and Pure Ferrite",
+      "expected": "Ferrite Carbon",
+      "color": "#FEB156",
+      "correctDescription": "Great! You've created Ferrite Carbon.",
+      "wrongDescription": "That's not Ferrite Carbon. Please try again."
+    },
+    {
+      "name": "scenario 8",
+      "description": "Synthesize Perfume using Ground Fungi and Root Essence",
+      "expected": "Perfume",
+      "color": "#A348D1",
+      "correctDescription": "Amazing! You've made Perfume.",
+      "wrongDescription": "This isn't Perfume. Please try again."
+    },
+    {
+      "name": "scenario 9",
+      "description": "Form Fertilising Paste from Fungi Essence and Ground Root",
+      "expected": "Fertilising Paste",
+      "color": "#AEC840",
+      "correctDescription": "Well done! The Fertilising Paste is ready.",
+      "wrongDescription": "That's not Fertilising Paste. Please try again."
+    },
+    {
+      "name": "scenario 10",
+      "description": "Mix Activated Fungi and Oxygen Booster to create an Inhaler",
+      "expected": "Inhaler",
+      "color": "#4F6AC1",
+      "correctDescription": "Excellent! You've created an Inhaler.",
+      "wrongDescription": "This isn't an Inhaler. Please try again."
+    },
+    {
+      "name": "scenario 11",
+      "description": "Combine Fertilising Paste and Steel to build a Hydroponic Tower",
+      "expected": "Hydroponic Tower",
+      "color": "#2B0F79",
+      "correctDescription": "Great job! The Hydroponic Tower is complete.",
+      "wrongDescription": "This isn't a Hydroponic Tower. Please try again."
+    },
+    {
+      "name": "scenario 12",
+      "description": "Combine Fungi Essence with Ground Root",
+      "expected": "Growth Agent",
+      "color": "#57809C",
+      "correctDescription": "Well done! The Ground Healing Herb is ready.",
+      "wrongDescription": "That's not Ground Healing Herb. Please try again."
+    },
+    {
+      "name": "scenario 13",
+      "description": "Activate Ground Healing Herb by heating it",
+      "expected": "Activated Healing Herb",
+      "color": "#DB8AE4",
+      "correctDescription": "Fantastic! The Healing Herb is activated.",
+      "wrongDescription": "This isn't the Activated Healing Herb. Please try again."
+    },
+    {
+      "name": "scenario 14",
+      "description": "Create a Medicinal Inhaler by combining Activated Healing Herb with an Inhaler",
+      "expected": "Medicinal Inhaler",
+      "color": "#02BE3D",
+      "correctDescription": "You've done it! The Medicinal Inhaler is ready.",
+      "wrongDescription": "This isn't a Medicinal Inhaler. Please try again."
+    },
+    {
+      "name": "scenario 15",
+      "description": "Use Carbon Sheet and Ground Healing Herb to produce an Injector",
+      "expected": "Injector",
+      "color": "#501E87",
+      "correctDescription": "Nice work! The Injector is ready.",
+      "wrongDescription": "That's not an Injector. Please try again."
+    },
+    {
+      "name": "scenario 16",
+      "description": "Combine Carbon Steel and Oxygen Booster to create Life Support",
+      "expected": "Life Support",
+      "color": "#BE1D6A",
+      "correctDescription": "Amazing! Life Support is ready.",
+      "wrongDescription": "This isn't Life Support. Please try again."
     }
   ]
+  
 }

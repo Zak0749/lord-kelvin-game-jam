@@ -7,8 +7,6 @@
   import { appState } from "./appState.svelte";
   import OptionsMenu from "./options/OptionsMenu.svelte";
   import Game from "./game/Game.svelte";
-  import WinningScreen from "./gamewon/WinningScreen.svelte";
-
   import theme from './assets/theme.mp3';
   import { options } from "./options/options.svelte";
 </script>

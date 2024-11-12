@@ -19,8 +19,18 @@
   } from "./helpers";
   import { gameUI } from "./GameUI.svelte";
 
-  function letGoOfElement(event: MouseEvent) {
-    if (!gameState.draggingElement || !gameUI.mergeGrid || !gameUI.elementsTray || !gameUI.submitArea) return;
+  function timeout(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function letGoOfElement(event: MouseEvent) {
+    if (
+      !gameState.draggingElement ||
+      !gameUI.mergeGrid ||
+      !gameUI.elementsTray ||
+      !gameUI.submitArea
+    )
+      return;
 
     let returnToGrid = true;
 
@@ -62,33 +72,52 @@
         combineElements(elementUnderMouse.name, gameState.draggingElement!.name)
       );
 
-      gameState.placedElements.push(
-        spawn_element({
-          ...combine,
-          x:
-            gameState.draggingElement!.x +
-            gameState.draggingElement!.offsetX / 2,
-          y:
-            gameState.draggingElement!.y +
-            gameState.draggingElement!.offsetY / 2,
-        })
-      );
+      console.log(combine);
+
+      if (combine) {
+        gameState.placedElements.push(
+          spawn_element({
+            ...combine,
+            x:
+              gameState.draggingElement!.x +
+              gameState.draggingElement!.offsetX / 2,
+            y:
+              gameState.draggingElement!.y +
+              gameState.draggingElement!.offsetY / 2,
+          })
+        );
+      } else {
+        explodeAnimation.do = true;
+        explodeAnimation.x = event.clientX;
+        explodeAnimation.y = event.clientY;
+
+        setTimeout(() => {
+          explodeAnimation.do = false;
+        }, 500)
+
+      }
 
       returnToGrid = false;
-    }
-
-    if (mouse_in_element(gameUI.submitArea, event)) {
-      if (gameState.draggingElement!.name == gameState.scenario.expected) {
-        returnToGrid = false;
-        removeInstance(gameState.draggingElement.instance_id);
-        gameState.showResults = 'correct'
-      } else {
-        gameState.showResults = 'error'
-      }
     }
 
     if (mouse_in_element(gameUI.mergeGrid!, event)) {
       returnToGrid = false;
+    }
+
+    if (mouse_in_element(gameUI.submitArea, event)) {
+      let element = gameState.draggingElement;
+      gameState.draggingElement = undefined;
+      gameState.closeDoorAnimation = true;
+
+      await timeout(1000);
+
+      if (element.name == gameState.scenario.expected) {
+        returnToGrid = false;
+        removeInstance(element.instance_id);
+        gameState.showResults = "correct";
+      } else {
+        gameState.showResults = "error";
+      }
     }
 
     if (returnToGrid) {
@@ -119,6 +148,14 @@
   }
 
   window.onmousemove = moveElement;
+
+  let explodeAnimation = $state({
+    do: false,
+    x: 0,
+    y: 0
+  });
+
+  $inspect(explodeAnimation);
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -129,7 +166,7 @@
     class="floating-element"
     style="left: {element.x}px; top: {element.y}px; z-index: {gameState.draggingElement ===
     element
-      ? 2
+      ? 5
       : 1}"
     id={element.instance_id.toString()}
     onmousedowncapture={(event) => {
@@ -138,21 +175,50 @@
       const offsetY = event.clientY - rect.top;
       dragElement(element, offsetX, offsetY);
     }}
-    onmouseupcapture={letGoOfElement}
+    onclick={letGoOfElement}
   >
     <ElementCard {element} />
   </div>
 {/each}
 
+<div
+  class="explode-animation"
+  class:doAnimation={explodeAnimation.do}
+  style="left: {explodeAnimation.x}px; top: {explodeAnimation.y}px;"
+></div>
+
 <style>
-  /* .container {
+  @keyframes explode {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+      box-shadow: 0 0 10px 10px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+      transform: scale(1.5);
+      opacity: 0.5;
+      box-shadow: 0 0 20px 20px rgba(255, 165, 0, 0.5);
+    }
+    100% {
+      transform: scale(2);
+      opacity: 0;
+      box-shadow: 0 0 30px 30px rgba(255, 255, 0, 0);
+    }
+  }
+
+  .explode-animation {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-  } */
+    width: 100px;
+    height: 100px;
+    background-color: rgb(229, 136, 50);
+    border-radius: 50%;
+    z-index: 10;
+    opacity: 0;
+  }
+
+  .explode-animation.doAnimation {
+    animation: explode 0.5s forwards;
+  }
 
   .floating-element {
     position: absolute;

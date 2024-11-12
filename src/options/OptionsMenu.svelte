@@ -27,6 +27,15 @@
       <button style="margin-top: 5rem" class="text-button" onclick={reset_progress}> Reset Progress </button>
     </section>
 
+    
+    <section style="padding-top: 5rem;">
+      <h2 style="color:var(--primary-color)">{appState.name}</h2>
+      <p>Game made by Lord Kelvin Fan Club</p>
+      <p>Art - Leia</p>
+      <p>Game Design - Mackenzie</p>
+      <p>Programming - Zak</p>
+      <p>Music - Emil</p>
+    </section>
 
 
     <button class="text-button" onclick={() => (appState.optionsMenuOpen = false)}> Close </button>

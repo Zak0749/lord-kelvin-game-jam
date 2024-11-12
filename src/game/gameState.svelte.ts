@@ -35,7 +35,7 @@ class GameState {
   discoveredElementsIds = $state<ElementId[]>(staring_ingredients);
   placedElements = $state<SpawnedElement[]>([]);
   draggingElement = $state<DraggedElement>();
-
+  closeDoorAnimation = $state(false);
 
   discoveredElements = $derived(this.discoveredElementsIds.map(get_element))
   scenarioReached = $state(0)
