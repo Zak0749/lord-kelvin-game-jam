@@ -5,9 +5,12 @@
     type GameElement, } from "./gameState.svelte";
   import { center_of_element } from './helpers'
   import { gameUI } from './GameUI.svelte'
+  import { pickUpNoise } from "../soundEffects.svelte";
 
   function placeElement(element: GameElement) {
     if (!gameUI.mergeGrid) return;
+
+    pickUpNoise.play();
 
     let spawned_element = spawn_element({
       ...element,

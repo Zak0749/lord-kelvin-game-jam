@@ -18,7 +18,7 @@
     mouse_in_rect,
   } from "./helpers";
   import { gameUI } from "./GameUI.svelte";
-  import { sendOff, useExtractor, useGrinder } from "../soundEffects.svelte";
+  import { dropNoise, explosionNoise, mergeNoise, pickUpNoise, sendOff, useExtractor, useGrinder, useHeater } from "../soundEffects.svelte";
 
   function timeout(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
@@ -32,6 +32,8 @@
       !gameUI.submitArea
     )
       return;
+
+    dropNoise.play();
 
     let dragging = gameState.draggingElement;
 
@@ -55,7 +57,7 @@
         } else if (machine.name == 'Grinder') {
           useGrinder.play();
         } else {
-          useExtractor.play();
+          useHeater.play();
         }
 
         gameState.placedElements.push(
@@ -90,6 +92,8 @@
         mergeAnimation.do = true;
         mergeAnimation.x =animation_position_x;
         mergeAnimation.y = animation_position_y;
+        mergeNoise.play();
+
 
         setTimeout(() => {
           mergeAnimation.do = false;
@@ -107,6 +111,7 @@
           })
         );
       } else {
+        explosionNoise.play();
         explodeAnimation.do = true;
         explodeAnimation.x = animation_position_x;
         explodeAnimation.y = animation_position_y;
@@ -158,6 +163,7 @@
     offsetX: number,
     offsetY: number
   ) {
+    pickUpNoise.play();
     (element as DraggedElement).offsetX = offsetX;
     (element as DraggedElement).offsetY = offsetY;
     gameState.draggingElement = element as DraggedElement;

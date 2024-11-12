@@ -75,7 +75,7 @@
     <p>Art - Leia</p>
     <p>Game Design - Mackenzie</p>
     <p>Programming - Zak</p>
-    <p>Music - Emil</p>
+    <p>Music & Sound Effects  - Emil</p>
   </section>
 </main>
 
