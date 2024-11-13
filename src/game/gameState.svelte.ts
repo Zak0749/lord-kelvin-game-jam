@@ -1,8 +1,13 @@
-import { Sound } from 'svelte-sound';
-import { appState } from '../appState.svelte';
-import { staring_ingredients, combinations, ingredients, machines, scenarios } from '../assets/elements.json'
-import { options } from '../options/options.svelte';
-
+import { Sound } from "svelte-sound";
+import { appState } from "../appState.svelte";
+import {
+  staring_ingredients,
+  combinations,
+  ingredients,
+  machines,
+  scenarios,
+} from "../assets/elements.json";
+import { options } from "../options/options.svelte";
 
 export type GameElement = {
   name: string;
@@ -11,15 +16,24 @@ export type GameElement = {
 
 type ElementId = string;
 
-export type SpawnedElement = GameElement & { instance_id: number, x: number; y: number; width: number; height: number };
+export type SpawnedElement = GameElement & {
+  instance_id: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+};
 
-export type DraggedElement = SpawnedElement & { offsetX: number, offsetY: number }
+export type DraggedElement = SpawnedElement & {
+  offsetX: number;
+  offsetY: number;
+};
 
 export type PlacedMachine = {
   name: string;
   color: string;
-  rect: DOMRect
-}
+  rect: DOMRect;
+};
 
 type dict = { [key: string]: any };
 
@@ -30,7 +44,7 @@ export type Scenario = {
   expected: ElementId;
   correctDescription: string;
   wrongDescription: string;
-}
+};
 
 const messageList = [
   null,
@@ -47,8 +61,14 @@ const messageList = [
   null,
   null,
   null,
-  null
-]
+  null,
+];
+
+function reset(): undefined {
+  alert("Woah somthing sus happening here, resetting the game");
+  localStorage.clear();
+  location.reload();
+}
 
 class GameState {
   showInstructions = $state(true);
@@ -57,43 +77,63 @@ class GameState {
   draggingElement = $state<DraggedElement>();
   closeDoorAnimation = $state(false);
 
-  discoveredElements = $derived(this.discoveredElementsIds.map(get_element))
-  scenarioReached = $state(0)
+  discoveredElements = $derived(
+    this.discoveredElementsIds
+      .map(get_element)
+      .map((element) => {
+        if (!element) {
+          reset() as unknown as Element;
+        } else {
+          return element!;
+        }
+      })
+      .map((e) => e!)
+  );
+  scenarioReached = $state(0);
 
   popup = $state({
     show: false,
-    message: '',
-  })
+    message: "",
+  });
 
   constructor() {
-    let storedDiscoveredElements = localStorage.getItem('discoveredElements');
+    let storedDiscoveredElements = localStorage.getItem("discoveredElements");
     if (storedDiscoveredElements) {
       this.discoveredElementsIds = JSON.parse(storedDiscoveredElements);
     }
 
-    let storedScenarioReached = localStorage.getItem('scenarioReached');
+    let storedScenarioReached = localStorage.getItem("scenarioReached");
     if (storedScenarioReached) {
       this.scenarioReached = parseInt(storedScenarioReached);
     }
 
     $effect.root(() => {
       $effect(() => {
-        localStorage.setItem('discoveredElements', JSON.stringify(this.discoveredElementsIds));
-      })
+        localStorage.setItem(
+          "discoveredElements",
+          JSON.stringify(this.discoveredElementsIds)
+        );
+      });
 
       $effect(() => {
-        localStorage.setItem('scenarioReached', this.scenarioReached.toString());
-      })
-    })
+        localStorage.setItem(
+          "scenarioReached",
+          this.scenarioReached.toString()
+        );
+      });
+    });
   }
-  
-  
-  machines = $state<PlacedMachine[]>(Object.values(machines).map((machine) => ({ ...machine, rect: new DOMRect() })));
+
+  machines = $state<PlacedMachine[]>(
+    Object.values(machines).map((machine) => ({
+      ...machine,
+      rect: new DOMRect(),
+    }))
+  );
 
   #scenarioIndex = $state(0);
 
-  showResults = $state<'correct' | 'error' | 'none'>();
-
+  showResults = $state<"correct" | "error" | "none">();
 
   get scenarioIndex() {
     return this.#scenarioIndex;
@@ -106,7 +146,7 @@ class GameState {
 
     if (index >= scenarios.length) {
       appState.gameState = "menu";
-      return
+      return;
     }
 
     if (messageList[index]) {
@@ -122,35 +162,43 @@ class GameState {
 
 export let gameState = new GameState();
 
-function searchMaps(element1: ElementId, element2: ElementId): ElementId | undefined {
-    let newElement = (combinations as dict)[`${element1}:${element2}`];
+function searchMaps(
+  element1: ElementId,
+  element2: ElementId
+): ElementId | undefined {
+  let newElement = (combinations as dict)[`${element1}:${element2}`];
+  if (newElement) {
+    return newElement;
+  } else {
+    newElement = (combinations as dict)[`${element2}:${element1}`];
     if (newElement) {
-        return newElement;
+      return newElement;
     } else {
-        newElement = (combinations as dict)[`${element2}:${element1}`]
-        if (newElement) {
-            return newElement;
-        } else {
-            return undefined;
-        }
+      return undefined;
     }
+  }
 }
 
 export function get_element(element: ElementId): GameElement {
-    return (ingredients as {[key: string] : GameElement})[element];
+  return (ingredients as { [key: string]: GameElement })[element];
 }
 
-export function combineElements(element1: ElementId, element2: ElementId): ElementId {
-    let newElement = searchMaps(element1, element2);
+export function combineElements(
+  element1: ElementId,
+  element2: ElementId
+): ElementId {
+  let newElement = searchMaps(element1, element2);
 
-    if (newElement) {
-        if (!gameState.discoveredElementsIds.some((element) => element === newElement)) {
-            gameState.discoveredElementsIds.push(newElement);
-        }
-        return newElement;
-    } else {
-        return 'Junk';
+  if (newElement) {
+    if (
+      !gameState.discoveredElementsIds.some((element) => element === newElement)
+    ) {
+      gameState.discoveredElementsIds.push(newElement);
     }
+    return newElement;
+  } else {
+    return "Junk";
+  }
 }
 
 export function removeInstance(instance_id: number) {
@@ -162,23 +210,29 @@ export function removeInstance(instance_id: number) {
   }
 }
 
-export function spawn_element(element: GameElement & {x : number, y: number}): SpawnedElement {
-    let id = Math.floor(Math.random() * 1000000);
-    while (gameState.placedElements.some((element) => element.instance_id === id)) {
-        id = Math.floor(Math.random() * 1000000);
-    }
+export function spawn_element(
+  element: GameElement & { x: number; y: number }
+): SpawnedElement {
+  let id = Math.floor(Math.random() * 1000000);
+  while (
+    gameState.placedElements.some((element) => element.instance_id === id)
+  ) {
+    id = Math.floor(Math.random() * 1000000);
+  }
 
-    return { ...element, instance_id: id, width: 100, height: 100 };
+  return { ...element, instance_id: id, width: 100, height: 100 };
 }
 
-
-export function machineProcess(machine: PlacedMachine, element: SpawnedElement): ElementId | undefined {
+export function machineProcess(
+  machine: PlacedMachine,
+  element: SpawnedElement
+): ElementId | undefined {
   let m = (machines as dict)[machine.name].actions;
-  
+
   if (m[element.name]) {
     if (!gameState.discoveredElementsIds.some((e) => e === m[element.name])) {
       gameState.discoveredElementsIds.push(m[element.name]);
-  }
+    }
     return m[element.name] as ElementId;
   } else {
     return undefined;
