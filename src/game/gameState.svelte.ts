@@ -1,4 +1,3 @@
-import { Sound } from "svelte-sound";
 import { appState } from "../appState.svelte";
 import {
   staring_ingredients,
@@ -50,12 +49,9 @@ export type Scenario = {
 };
 
 const messageList = [
+  "You are a aspiring chemist but in order to get into the galactic renowned glasgow university, ran by Lord Kelvin, you are volunteering with a local maker charity to get experience - your boss is off today so it's just you",
   null,
-  null,
-  "Oh no! Looks parts of the message was corrupted, you will need to try to work out the correct combination.",
-  null,
-  null,
-  null,
+  "Oh no! Looks parts of the message was corrupted, that hasn't happened before, you will need to try to work out the correct combination.",
   null,
   null,
   null,
@@ -65,6 +61,9 @@ const messageList = [
   null,
   null,
   null,
+  null,
+  null,
+  "OMG it's Lord Kelvin he is in charge of Glasgow University!!!! Maybe if you impress him he will help your application",
 ];
 
 function reset(): undefined {

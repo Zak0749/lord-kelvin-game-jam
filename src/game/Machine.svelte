@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Sound } from 'svelte-sound';
+  // import { Sound } from 'svelte-sound';
   import type { PlacedMachine } from "./gameState.svelte";
   import { createSound } from "../soundEffects.svelte";
 
@@ -33,7 +33,7 @@
   img {
     width: 64px;
   }
-  
+
   h3 {
     margin: 0;
     margin-top: 5px;

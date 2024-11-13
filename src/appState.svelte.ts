@@ -6,7 +6,7 @@ class AppState {
     gameState: "menu" | "playing" = $state("menu");
     optionsMenuOpen = $state(false);
     completedGame = $derived(gameState.scenarioReached == scenarios.length);
-    name = 'Galactic Alchemy';
+    name = 'Cosmic Crafting';
 }
 
 export let appState = new AppState();

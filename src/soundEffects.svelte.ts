@@ -1,4 +1,4 @@
-import { Sound } from 'svelte-sound';
+// import { Sound } from 'svelte-sound';
 import { options } from './options/options.svelte';
 import buttonSound from './assets/sounds/button-click.mp3';
 import heaterSound from './assets/sounds/heater.mp3';
@@ -15,17 +15,49 @@ import dropSound from './assets/sounds/item-drop.mp3';
 
 
 
-export const buttonClick = new Sound(buttonSound, {
-  volume: options.calculated_sfx_volume,
-});
 
-export function createSound(src: string) {
-  return new Sound(src, {
-    volume: options.calculated_sfx_volume,
-  });
-}
+//   new Sound(buttonSound, {
+  //   volume: options.calculated_sfx_volume,
+  // });
+  
+  export function createSound(src: string) {
+    return new Audio(src)
+  }
+  
+// export const useExtractor = {
+//   play: () => {}
+// }
+
+// export const useHeater = {
+//   play: () => {}
+// }
+
+// export const useGrinder = {
+//   play: () => {}
+// }
+
+// export const sendOff = {
+//   play: () => {}
+// }
+
+// export const explosionNoise = {
+//   play: () => {}
+// }
+
+// export const mergeNoise = {
+//   play: () => {}
+// }
+
+// export const pickUpNoise = {
+//   play: () => {}
+// }
+
+// export const dropNoise = {
+//   play: () => {}
+// }
 
 
+export const buttonClick = createSound(buttonSound);
 export const useExtractor = createSound(extractorSound);
 export const useHeater = createSound(heaterSound);
 export const useGrinder = createSound(grinderSound);
