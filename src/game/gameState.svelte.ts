@@ -58,12 +58,7 @@ const messageList = [
   null,
   null,
   null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  "OMG it's Lord Kelvin he is in charge of Glasgow University!!!! Maybe if you impress him he will help your application",
+  "OMG it's Lord Kelvin he is in charge of Glasgow University!!!! Maybe if you impress him he will help your application"
 ];
 
 function reset(): undefined {
