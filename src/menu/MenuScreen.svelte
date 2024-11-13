@@ -87,7 +87,7 @@
   }
 
   main {
-    background-image: url("../assets/background.jpg");
+    background-image: url("../assets/background-new.png");
     width: 100vw;
     height: 100vh;
     background-size: cover;
