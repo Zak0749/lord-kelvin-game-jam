@@ -6,11 +6,12 @@ import {
   ingredients,
   machines,
   scenarios,
-} from "../assets/elements.json";
+} from "../assets/gameData.json";
 import { options } from "../options/options.svelte";
 
 export type GameElement = {
   name: string;
+  fileName: string;
   color: string;
 };
 
@@ -33,6 +34,7 @@ export type PlacedMachine = {
   name: string;
   color: string;
   rect: DOMRect;
+  fileName: string;
 };
 
 type dict = { [key: string]: any };
@@ -41,6 +43,7 @@ export type Scenario = {
   name: string;
   description: string;
   color: string;
+  fileName: string;
   expected: ElementId;
   correctDescription: string;
   wrongDescription: string;

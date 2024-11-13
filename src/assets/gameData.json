@@ -10,7 +10,8 @@
           "Ground Root": "Fertilising Paste",
           "Fertilising Paste": "Growth Agent"
           },
-          "name": "Extractor"
+          "name": "Extractor",
+          "fileName": "extractor"
       },
       "Grinder": {
           "color": "#6479F2",
@@ -19,7 +20,8 @@
           "Fungi": "Ground Fungi",
           "Healing Herb": "Ground Healing Herb"
           },
-          "name": "Grinder"
+          "name": "Grinder",
+          "fileName": "grinder"
       },
       "Heater": {
           "color": "#A469ED",
@@ -30,7 +32,8 @@
           "Carbon Flakes": "Carbon Sheet",
           "Ground Healing Herb": "Activated Healing Herb"
           },
-          "name": "Heater"
+          "name": "Heater",
+          "fileName": "heater"
       }
   },
   "combinations": {
@@ -49,110 +52,137 @@
   "ingredients": {
       "Hydroponic Root": {
           "color": "#DAC01F",
+          "fileName": "hydroponic-root",
           "name": "Hydroponic Root"
       },
       "Fungi": {
           "color": "#1DA79F",
+          "fileName": "fungi",
           "name": "Fungi"
       },
       "Ferrite Dust": {
           "color": "#0F3175",
+          "fileName": "ferrite-dust",
           "name": "Ferrite Dust"
       },
       "Pure Ferrite": {
           "color": "#418FBC",
+          "fileName": "pure-ferrite",
           "name": "Pure Ferrite"
       },
       "Ferrite Carbon": {
           "color": "#FEB156",
+          "fileName": "ferrite-carbon",
           "name": "Ferrite Carbon"
       },
       "Carbon Flakes": {
           "color": "#6273D5",
+          "fileName": "carbon-flakes",
           "name": "Carbon Flakes"
       },
       "Carbon Sheet": {
           "color": "#B0DAF6",
+          "fileName": "carbon-sheet",
           "name": "Carbon Sheet"
       },
       "Carbon Steel": {
           "color": "#7B65D3",
+          "fileName": "carbon-steel",
           "name": "Carbon Steel"
       },
       "Oxygen Booster": {
           "color": "#89DC4F",
+          "fileName": "notfound",
           "name": "Oxygen Booster"
       },
       "Biological Enhancer": {
           "color": "#2BD507",
+          "fileName": "biological-enhancer",
           "name": "Biological Enhancer"
       },
       "Healing Herb": {
           "color": "#DB8AE4",
+          "fileName": "healing-herb",
           "name": "Healing Herb"
       },
       "Activated Fungi": {
           "color": "#3E7654",
+          "fileName": "activated-fungi",
           "name": "Activated Fungi"
       },
       "Ground Fungi": {
           "color": "#A02FEC",
+          "fileName": "ground-fungi",
           "name": "Ground Fungi"
       },
       "Root Essence": {
           "color": "#E13A5D",
+          "fileName": "root-essence",
           "name": "Root Essence"
       },
       "Ground Root": {
           "color": "#A12793",
+          "fileName": "ground-root",
           "name": "Ground Root"
       },
       "Fungi Essence": {
           "color": "#843D09",
+          "fileName": "fungi-essence",
           "name": "Fungi Essence"
       },
       "Perfume": {
           "color": "#A348D1",
+          "fileName": "perfume",
           "name": "Perfume"
       },
       "Fertilising Paste": {
           "color": "#AEC840",
+          "fileName": "fertilising-paste",
           "name": "Fertilising Paste"
       },
       "Inhaler": {
           "color": "#4F6AC1",
+          "fileName": "inhaler",
           "name": "Inhaler"
       },
       "Hydroponic Tower": {
           "color": "#2B0F79",
+          "fileName": "hydroponic-tower",
           "name": "Hydroponic Tower"
       },
       "Steel": {
           "color": "#B5C08D",
+          "fileName": "steel",
           "name": "Steel"
       },
       "Ground Healing Herb": {
           "color": "#57809C",
+          "fileName": "ground-healing-herb",
           "name": "Ground Healing Herb"
       },
       "Activated Healing Herb": {
           "color": "#DB8AE4",
+          "fileName": "activated-healing-herb",
           "name": "Activated Healing Herb"
       },
       "Medicinal Inhaler": {
           "color": "#02BE3D",
+          "fileName": "medicinal-inhaler",
           "name": "Medicinal Inhaler"
       },
       "Injector": {
           "color": "#501E87",
+          "fileName": "injector",
           "name": "Injector"
       },
       "Life Support": {
           "color": "#BE1D6A",
+          "fileName": "life-support",
           "name": "Life Support"
       },
       "Growth Agent": {
           "color": "#DAC01F",
+          "fileName": "growth-agent",
           "name": "Growth Agent"
       }
   },
@@ -164,74 +194,83 @@
   ],
   "scenarios": [
     {
-      "name": "scenario 1",
+      "name": "Callisto",
       "description": "Hi! I want to start my own garden. Can you send me a Hydroponic Root?",
       "expected": "Hydroponic Root",
       "color": "#DAC01F",
+      "fileName": "callisto",
       "correctDescription": "Thank you! This is perfect.",
       "wrongDescription": "This isn't what I was looking for. Please send me a Hydroponic Root."
     },
     {
-      "name": "scenario 2",
+      "name": "Doloris",
       "description": "Root essence is meant to be great for the skin. Use the Extractor to get it from Hydroponic Root and send it to me.",
       "expected": "Root Essence",
+      "fileName": "doloris",
       "color": "#2896A1",
       "correctDescription": "Thank you so much! This is exactly what I needed.",
       "wrongDescription": "This isn't what I wanted. Please send me Root Essence."
     },
     {
-      "name": "scenario 3",
+      "name": "Squiggles",
       "description": "Hi I need something to help grow my bacteria colony can you combined Hydroponic Root and [Fungi] to make a Biological Enhancer. That will help my lovelies grow",
       "expected": "Biological Enhancer",
+      "fileName": "squiggles",
       "color": "#EF7214",
       "correctDescription": "Thanks, that is perfect! My bacteria colony is going to love this.",
       "wrongDescription": "NO, I needed an Biological Enhancer! My bacteria colony is going to die!"
     },
     {
-      "name": "scenario 4",
+      "name": "Kermit",
       "description": "I dropped by keys down the drain I need a magnet. Please could you make Ferrite Carbon by extracting [Pure Ferrite] from [Ferrite] Dust then combining with [Carbon Flakes]",
       "expected": "Ferrite Carbon",
       "color": "#FEB156",
+      "fileName": "kermit",
       "correctDescription": "Yes! I can finally get my keys back. Thank you for the Ferrite Carbon.",
       "wrongDescription": "This is not grabbing my keys. Please send me Ferrite Carbon."
     },
     {
-      "name": "scenario 5",
+      "name": "Chantelle",
       "description": "I wanna smell good for a date. Synthesize Perfume using Ground Fungi and [Root] Essence",
       "expected": "Perfume",
       "color": "#A348D1",
+      "fileName": "chantelle",
       "correctDescription": "Amazing! You've made Perfume. I smell great!",
       "wrongDescription": "This isn't Perfume. Please try again."
     },
     {
-      "name": "scenario 6 - same as one",
+      "name": "Callisto",
       "description": "Hi it's me again! My plants aren't need something to grow on. Can you make Fertilising Paste from Fungi Essence and [Ground Root] and combine with Steel to build a [Hydroponic Tower]",
       "expected": "Hydroponic Tower",
       "color": "#AEC840",
+      "fileName": "callisto",
       "correctDescription": "Thank you! This is perfect. My plants will be as tall as trees in no time.",
       "wrongDescription": "That's not Fertilising Paste. My plants are going to die!"
     },
     {
-      "name": "scenario 7",
+      "name": "Raiu",
       "description": "My kid has asthma can you make her an inhaler. [Grind] then heat fungi and combine with an Oxygen Booster made with [Ferrite] Carbon and [Biological] Enhancer to create an Inhaler",
       "expected": "Inhaler",
       "color": "#4F6AC1",
+      "fileName": "raiu",
       "correctDescription": "Oh my goodness! You've made an Inhaler. This should help my daughter breathe.",
       "wrongDescription": "She is really struggling to breathe. Please send me an Inhaler."
     },
     {
-      "name": "scenario 8",
+      "name": "Kermit",
       "description": "The support system on my ship is failing. Combine [Carbon] Steel and [Oxygen] Booster to create [Life Support]",
       "expected": "Life Support",
+      "fileName": "kermit",
       "color": "#BE1D6A",
       "correctDescription": "Amazing! My ship is saved. Thank you for the Life Support.",
       "wrongDescription": "Cmon buddy my ship is falling apart. Help me"
     },
     {
-      "name": "scenario 9",
+      "name": "Raiu",
       "description": "The inhaler only worked well for a while a medicinal one is needed!. Combined Activated Fungi and a Bio [Enhancer] to get [healing] herb activate it and combine with an Inhaler to create a Medicinal Inhaler",
       "expected": "Medicinal Inhaler",
       "color": "#57809C",
+      "fileName": "raiu",
       "correctDescription": "That should work for the long term. You are a true hero",
       "wrongDescription": "Thanks not working! Please help!"
     },
@@ -239,9 +278,10 @@
       "name": "Lord Kelvin",
       "description": "Hey it's Lord Kelvin. A fish species on my planet is dying out due to an infection caused by fishing - I used to do a lot of fishing but it's spreading the infection and I feel bad for the fishes. To save the fish can you make me an injector by joining a [carbon] sheet with a [ground] healing herb. The fish need your help!",
       "expected": "Injector",
+      "fileName": "lord-kelvin",
       "color": "#501E87",
-      "correctDescription": "Nice work! The Injector fish are saved. - lord kelvin fan club is very cool :)",
-      "wrongDescription": "That's not an Injector Student. You do not deserve a place at galactic renowned Glasgow University - the most prestigious university in the galaxy ."
+      "correctDescription": "Nice work! The fish are saved. You do not deserve a place at galactic renowned Glasgow University - the most prestigious university in the galaxy. Also lord kelvin fan club is very cool :)",
+      "wrongDescription": "That's not an Injector Student. You do not deserve a place at galactic renowned Glasgow University - the most prestigious university in the galaxy."
     }
     
   ]

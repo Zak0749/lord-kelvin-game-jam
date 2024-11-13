@@ -1,6 +1,5 @@
 <script lang="ts">
   import { gameState } from "./gameState.svelte";
-  import person from "../assets/person.png";
   import CorruptedText from "./corruptedText.svelte";
 
   type Text =  { 
@@ -32,10 +31,13 @@
 
 {#if gameState.showInstructions}
   <section class="game-element">
-    <div
+    <!-- <div
       style="background-color: {gameState.scenario.color}"
       class="person-img"
-    ></div>
+    ></div> -->
+    {#await import(`../assets/people/${gameState.scenario.fileName}.png`) then { default: src }}
+      <img class="person-img" width="128" height="128" {src} alt="{gameState.scenario.name}" />
+    {/await}
     <div class="person-desc">
       <h2>{gameState.scenario.name}</h2>
       <p bind:this={desc}>
@@ -53,10 +55,10 @@
 
 <style>
   .person-img {
-    height: 150px;
-    min-width: 150px;
-    border-radius: 50%;
+    border-radius: 1rem;
+    outline: 1px var(--primary-color) solid;
     margin-right: 1rem;
+    margin-left: 1rem;
   }
 
   section {

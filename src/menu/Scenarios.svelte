@@ -1,7 +1,7 @@
 <script lang="ts">
   import { gameState } from "../game/gameState.svelte";
   import { appState } from "../appState.svelte";
-  import { scenarios } from '../assets/elements.json'
+  import { scenarios } from '../assets/gameData.json'
   import { buttonClick } from "../soundEffects.svelte";
 
   let {closePopup}: { closePopup: () => void } = $props()

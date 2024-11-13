@@ -1,5 +1,5 @@
 import { gameState } from "./game/gameState.svelte";
-import { scenarios } from './assets/elements.json'
+import { scenarios } from './assets/gameData.json'
 
 
 class AppState {

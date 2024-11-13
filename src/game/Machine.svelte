@@ -17,7 +17,9 @@
 </script>
 
 <div class="machine" bind:this={element}>
-  <div class="square" style="--color: {machine.color}"></div>
+  {#await import(`../assets/machines/${machine.fileName}.png`) then { default: src }}
+    <img {src} alt="{machine.name}" />
+  {/await}
   <h3 class="name">{machine.name}</h3>
 </div>
 
@@ -27,12 +29,11 @@
     flex-direction: column;
     align-items: center;
   }
-  .square {
+
+  img {
     width: 64px;
-    height: 64px;
-    background-color: var(--color);
   }
-   
+  
   h3 {
     margin: 0;
     margin-top: 5px;

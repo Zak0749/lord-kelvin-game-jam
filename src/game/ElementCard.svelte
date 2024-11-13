@@ -16,7 +16,9 @@
 
 
 <div class="element" bind:clientHeight="{height}" bind:clientWidth="{w}" style="cursor: {(element as SpawnedElement).width ? 'grab' : 'pointer'} !important">
-  <div class="square" style="--background-color: {element.color}"></div>
+  {#await import(`../assets/ingredients/${element.fileName}.png`) then { default: src }}
+    <img width="32" height="32" {src} alt="{element.name}" />
+  {/await}
   <h3 class="name">{element.name}</h3>
 </div>
 
@@ -26,14 +28,7 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-  filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
-
-  }
-  .square {
-    width: 32px;
-    height: 32px;
-    /* background-color: var(--background-color); */
-    background-image: url(../assets/elements/fungi_essence.png);
+    filter: drop-shadow( 3px 3px 2px rgba(0, 0, 0, .7));
   }
   
   h3 {

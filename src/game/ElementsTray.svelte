@@ -21,7 +21,7 @@
   }
 </script>
 
-<div class="game-element">
+<div class="game-element" style="overflow-y: scroll">
   <ul>
     {#each gameState.discoveredElements as element}
       <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
